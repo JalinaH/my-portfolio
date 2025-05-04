@@ -13,44 +13,69 @@ interface Project {
   tags: string[];
   liveUrl?: string;
   githubUrl?: string;
+  projectType: "Group" | "Individual";
+  role?: string; // Only required for group projects
 }
 
 const projectsData: Project[] = [
   {
-    title: "E-Commerce Platform",
+    title: "CookPal",
     description:
-      "A full-featured e-commerce platform with product listings, cart functionality, user authentication, and payment processing.",
-    image: "/placeholder.svg?height=400&width=600",
-    tags: ["React", "Node.js", "MongoDB", "Stripe"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/yourusername/project",
+      "Cookpal is a web application developed as part of our first-year web assignment, aimed at recipe exploration and management. Built with React (Vite) and Firebase, it features secure user authentication, personalized profiles, intuitive recipe creation, detailed recipe views, and tag-based filtering. Deployed on Firebase for easy access.",
+    image: "/cookpal.jpeg",
+    tags: ["React.js", "Bootstrap", "CSS", "Firebase"],
+    liveUrl: "https://cookpal-7029c.web.app/",
+    githubUrl: "https://github.com/rithakith/RecipeApp",
+    projectType: "Group",
+    role: "Frontend Developer",
   },
   {
-    title: "Task Management App",
+    title: "Smart Cricket Trainee - CricBOT Mobile App",
     description:
-      "A productivity app that helps users organize tasks, set deadlines, and track progress with intuitive UI and real-time updates.",
-    image: "/placeholder.svg?height=400&width=600",
-    tags: ["Next.js", "TypeScript", "Firebase", "Tailwind CSS"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/yourusername/project",
+      "As part of our first-year IoT hardware project, I developed a mobile app for CricBOT—an automated cricket practice machine. Built with React Native (Expo) and styled using NativeWind, the app features Firebase authentication and Firestore integration. It communicates with the CricBOT machine via WiFi using API endpoints hosted on an ESP8266 (NodeMCU). Users can customize practice sessions, track player stats through charts, and manage profiles, offering a smooth and interactive IoT experience.",
+    image: "/cricbotmobile.jpeg",
+    tags: ["React Native", "Tailwind CSS", "Firebase", "IoT"],
+    githubUrl: "https://github.com/JalinaH/CricBOT",
+    projectType: "Individual",
   },
   {
-    title: "Portfolio Website",
+    title: "Smart Cricket Trainee - CricBOT",
     description:
-      "A responsive portfolio website showcasing projects, skills, and professional experience with dark mode and animations.",
-    image: "/placeholder.svg?height=400&width=600",
-    tags: ["HTML/CSS", "JavaScript", "GSAP", "Responsive Design"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/yourusername/project",
+      "As part of our first-year IoT-based hardware project, we developed CricBOT—an automated cricket practice machine aimed at enhancing training with customizable sessions. The system is powered by an Arduino Mega and ESP8266 (NodeMCU) for connectivity. Users can select ball type, count, and delay via a keypad interface or through a companion mobile app built with React Native. Motor speeds and angles adjust dynamically for various ball types (e.g., fast, bouncer, swing). Integrated components like proximity sensors, LCDs, and load cells enable real-time feedback and error detection.",
+    image: "/cricbot.jpeg",
+    tags: ["Arduino", "NodeMCU", "IoT"],
+    githubUrl:
+      "https://github.com/JalinaH/CricBOT---Automated-Cricket-Practice-Machine",
+    projectType: "Group",
   },
   {
-    title: "Weather Dashboard",
+    title: "DebateX - Revolutionizing debate platform",
     description:
-      "A weather application that provides current conditions and forecasts for any location with interactive maps and charts.",
-    image: "/placeholder.svg?height=400&width=600",
-    tags: ["React", "OpenWeather API", "Chart.js", "Geolocation"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/yourusername/project",
+      "DebateX is a modern web platform designed to host structured debates efficiently, offering a seamless experience for debaters, judges, and organizers. Built with Next.js, Tailwind CSS, Firebase, and Framer Motion, it features automated time management, role-based interfaces, real-time chat, session recording, and personal note-taking tools. With support for fair coin tosses and clean UI components via Radix UI, DebateX ensures organized and engaging debate sessions. The project was recognized as a semi-finalist at Idealize 2024 for its innovative approach to enhancing online discourse.",
+    image: "/debatex.jpeg",
+    tags: [
+      "Next.js",
+      "Tailwind CSS",
+      "Framer Motion",
+      "@stream-io/video-react-sdk",
+      "Clerk",
+      "Firebase",
+      "Radix UI",
+    ],
+    liveUrl: "https://debate-x-nrd5.vercel.app",
+    githubUrl: "https://github.com/VinukaVilhan/DebateXt",
+    projectType: "Group",
+    role: "Backend Developer",
+  },
+  {
+    title: "CeylonRides - Vehicle Rental Platform",
+    description:
+      "CeylonRides is a full-stack vehicle rental web application built independently using the MERN stack, designed to serve multiple user roles—Tourists, Drivers, and Administrators. It enables tourists to browse and book vehicles with or without drivers, while providing admins with full control over bookings, drivers, and vehicles through a robust admin panel. Drivers can view their assigned trips and manage their profiles via a dedicated dashboard. Key features include JWT-based authentication, role-based access, dynamic booking management, and calendar-based availability tracking. Deployed using Netlify and Render, CeylonRides reflects my ability to architect and deliver scalable, production-ready applications from the ground up.",
+    image: "/ceylonrides.jpeg",
+    tags: ["React.js", "Node.js", "MongoDB", "Express.js", "Tailwind CSS"],
+    liveUrl: "https://ceylonrides.netlify.app",
+    githubUrl: "https://github.com/JalinaH/CeylonRides",
+    projectType: "Individual",
   },
 ];
 
@@ -89,6 +114,22 @@ export default function ProjectsSection() {
               <h3 className="text-xl font-bold mb-2 text-green-500">
                 {project.title}
               </h3>
+              <div className="flex items-center mb-2 text-sm">
+                <span
+                  className={`${
+                    project.projectType === "Group"
+                      ? "bg-blue-500/20 text-blue-400"
+                      : "bg-purple-500/20 text-purple-400"
+                  } px-2 py-0.5 rounded-full`}
+                >
+                  {project.projectType} Project
+                </span>
+                {project.projectType === "Group" && project.role && (
+                  <span className="bg-green-500/20 text-green-400 px-2 py-0.5 rounded-full ml-2">
+                    {project.role}
+                  </span>
+                )}
+              </div>
               <p className="text-gray-300 mb-4">{project.description}</p>
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.tags.map((tag, tagIndex) => (

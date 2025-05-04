@@ -17,23 +17,66 @@ import {
   GitBranch,
   Globe,
   Cpu,
+  Coffee,
+  Hash,
+  Target,
+  Smartphone,
 } from "lucide-react";
 
 interface Skill {
   name: string;
   icon: React.ReactNode;
-  category: "frontend" | "backend" | "design" | "other";
+  category:
+    | "languages"
+    | "frontend"
+    | "backend"
+    | "database"
+    | "design"
+    | "other";
 }
 
 const skillsData: Skill[] = [
-  {
-    name: "HTML/CSS",
-    icon: <Code2 className="h-10 w-10" />,
-    category: "frontend",
-  },
+  // Programming Languages
   {
     name: "JavaScript",
     icon: <FileJson className="h-10 w-10" />,
+    category: "languages",
+  },
+  {
+    name: "TypeScript",
+    icon: <Braces className="h-10 w-10" />,
+    category: "languages",
+  },
+  {
+    name: "Python",
+    icon: <Code2 className="h-10 w-10" />,
+    category: "languages",
+  },
+  {
+    name: "Java",
+    icon: <Coffee className="h-10 w-10" />,
+    category: "languages",
+  },
+  {
+    name: "C",
+    icon: <Hash className="h-10 w-10" />,
+    category: "languages",
+  },
+  {
+    name: "C#",
+    icon: <Hash className="h-10 w-10" />,
+    category: "languages",
+  },
+  {
+    name: "Dart",
+    icon: <Target className="h-10 w-10" />,
+    category: "languages",
+  },
+
+  // Frontend
+  {
+    name: "HTML/CSS",
+    icon: <Code2 className="h-10 w-10" />,
     category: "frontend",
   },
   {
@@ -42,15 +85,27 @@ const skillsData: Skill[] = [
     category: "frontend",
   },
   {
-    name: "TypeScript",
-    icon: <Braces className="h-10 w-10" />,
-    category: "frontend",
-  },
-  {
     name: "Next.js",
     icon: <Globe className="h-10 w-10" />,
     category: "frontend",
   },
+  {
+    name: "Flutter",
+    icon: <Smartphone className="h-10 w-10" />,
+    category: "frontend",
+  },
+  {
+    name: "React Native",
+    icon: <Smartphone className="h-10 w-10" />,
+    category: "frontend",
+  },
+  {
+    name: "Vue.js",
+    icon: <Layers className="h-10 w-10" />,
+    category: "frontend",
+  },
+
+  // Backend
   {
     name: "Node.js",
     icon: <Server className="h-10 w-10" />,
@@ -61,26 +116,27 @@ const skillsData: Skill[] = [
     icon: <Cpu className="h-10 w-10" />,
     category: "backend",
   },
+
+  // Database
   {
     name: "MongoDB",
     icon: <Database className="h-10 w-10" />,
-    category: "backend",
+    category: "database",
   },
   {
     name: "SQL",
     icon: <Database className="h-10 w-10" />,
-    category: "backend",
+    category: "database",
   },
+
+  // Design
   {
     name: "Figma",
     icon: <Figma className="h-10 w-10" />,
     category: "design",
   },
-  {
-    name: "UI/UX Design",
-    icon: <PenTool className="h-10 w-10" />,
-    category: "design",
-  },
+
+  // Other
   {
     name: "Git",
     icon: <GitBranch className="h-10 w-10" />,
@@ -93,8 +149,10 @@ export default function SkillsSection() {
   const isInView = useInView(sectionRef, { once: true, threshold: 0.2 });
 
   const categories = [
+    { id: "languages", name: "Programming Languages" },
     { id: "frontend", name: "Frontend" },
     { id: "backend", name: "Backend" },
+    { id: "database", name: "Databases" },
     { id: "design", name: "Design" },
     { id: "other", name: "Other" },
   ];
@@ -107,7 +165,7 @@ export default function SkillsSection() {
     >
       <SectionHeading title="Skills" />
 
-      <div className="grid md:grid-cols-2 gap-10">
+      <div className="grid grid-cols-1 gap-10">
         {categories.map((category) => (
           <div
             key={category.id}
@@ -122,10 +180,10 @@ export default function SkillsSection() {
               }ms`,
             }}
           >
-            <h3 className="text-xl font-semibold mb-6 text-green-500">
+            <h3 className="text-xl font-semibold mb-6 text-green-500 border-b border-green-500/30 pb-2">
               {category.name}
             </h3>
-            <div className="grid grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
               {skillsData
                 .filter((skill) => skill.category === category.id)
                 .map((skill, index) => (
@@ -134,7 +192,7 @@ export default function SkillsSection() {
                     className="flex flex-col items-center justify-center p-4 bg-gray-900/30 rounded-lg hover:bg-gray-800/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-green-500/10"
                   >
                     <div className="text-green-500 mb-3">{skill.icon}</div>
-                    <span className="text-gray-300 text-sm font-medium">
+                    <span className="text-gray-300 text-sm font-medium text-center">
                       {skill.name}
                     </span>
                   </div>

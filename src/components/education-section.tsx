@@ -14,25 +14,25 @@ interface Education {
 
 const educationData: Education[] = [
   {
-    degree: "Master of Computer Science",
-    institution: "University Name",
-    duration: "2020 - 2022",
+    degree: "GCE O/L",
+    institution: "Malambe Boys' Model School",
+    duration: "2017",
     description:
-      "Specialized in Artificial Intelligence and Machine Learning. Completed thesis on Neural Networks for Natural Language Processing.",
+      "9As",
   },
   {
-    degree: "Bachelor of Computer Science",
-    institution: "University Name",
-    duration: "2016 - 2020",
+    degree: "GCE A/L",
+    institution: "Nalanda College, Colombo 10",
+    duration: "2021",
     description:
-      "Focused on Software Engineering and Web Development. Graduated with honors and completed multiple internships.",
+      "Combined Maths - A, Chemistry - A, Physics - B, Z-score - 1.758",
   },
   {
-    degree: "High School Diploma",
-    institution: "School Name",
-    duration: "2012 - 2016",
+    degree: "Bsc. (Hons) in Information Technology",
+    institution: "University of Moratuwa",
+    duration: "2023 - Present",
     description:
-      "Science and Mathematics track. Participated in various programming competitions and hackathons.",
+      "Currently pursuing a degree in Information Technology at the University of Moratuwa, passionate about web and mobile app development.",
   },
 ];
 

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { ArrowDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { typeText } from "@/lib/animations";
+import profileImage from "@/assets/image.png";
 
 export default function HeroSection() {
   const typingRef = useRef<HTMLSpanElement>(null);
@@ -12,8 +13,8 @@ export default function HeroSection() {
   useEffect(() => {
     if (typingRef.current) {
       const phrases = [
-        "Frontend Developer",
-        "UI/UX Designer",
+        "Web Developer",
+        "Mobile App Developer",
         "Problem Solver",
         "Creative Thinker",
       ];
@@ -34,16 +35,16 @@ export default function HeroSection() {
           )}
         >
           <h1 className="text-4xl md:text-6xl font-bold">
-            Hi, I&apos;m <span className="text-green-500">Your Name</span>
+            Hi, I&apos;m <span className="text-green-500">Jalina Hirushan</span>
           </h1>
           <h2 className="text-2xl md:text-3xl text-gray-300">
             I&apos;m a <span ref={typingRef} className="text-green-500"></span>
           </h2>
           <p className="text-gray-400 text-lg max-w-lg">
-            I design and develop experiences that make people&apos;s lives
-            simpler through Web and Mobile apps. I work with various
-            technologies to create high-performance, responsive websites and
-            applications.
+            I’m an enthusiastic and dedicated IT undergraduate passionate about
+            building creative web and mobile applications. I enjoy learning new
+            technologies, solving real-world problems, and working
+            collaboratively to bring ideas to life.
           </p>
           <div className="flex space-x-4 pt-4">
             <a
@@ -95,18 +96,21 @@ export default function HeroSection() {
               </div>
             </div>
 
-            {/* Hexagonal image container */}
-            <div className="relative w-64 h-64 md:w-80 md:h-80 overflow-hidden z-10">
-              <div className="absolute inset-0 bg-gradient-to-br from-green-500 to-green-700 opacity-80 clip-hex animate-slow-spin"></div>
-              <div className="absolute inset-1 bg-black clip-hex z-10"></div>
-              <div className="absolute inset-2 overflow-hidden clip-hex z-20">
-                <Image
-                  src="/placeholder.svg?height=320&width=320"
-                  alt="Your Name"
-                  fill
-                  className="object-cover scale-105"
-                  priority
-                />
+            {/* Circular image container */}
+            <div className="relative w-72 h-72 md:w-96 md:h-96 overflow-hidden z-10">
+              <div className="absolute inset-0 bg-gradient-to-br from-green-500 to-green-700 opacity-80 rounded-full animate-slow-spin"></div>
+              <div className="absolute inset-1 bg-black rounded-full z-10"></div>
+              <div className="absolute inset-2 overflow-hidden rounded-full z-20">
+                <div className="relative w-full h-full flex items-center justify-center">
+                  <Image
+                    src={profileImage}
+                    alt="Jalina Hirushan"
+                    className="object-contain max-w-[100%] max-h-[100%] scale-150"
+                    width={500}
+                    height={500}
+                    priority
+                  />
+                </div>
               </div>
             </div>
           </div>

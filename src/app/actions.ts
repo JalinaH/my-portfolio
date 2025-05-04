@@ -1,6 +1,7 @@
 "use server";
 
 import { XMLParser } from "fast-xml-parser";
+import nodemailer from "nodemailer";
 
 interface MediumPost {
   title: string;
@@ -75,5 +76,50 @@ export async function getMediumPosts(username: string): Promise<MediumPost[]> {
   } catch (error) {
     console.error("Error fetching Medium posts:", error);
     return [];
+  }
+}
+
+interface ContactFormData {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
+export async function sendContactEmail(formData: ContactFormData) {
+  try {
+    // Create a transporter
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASSWORD,
+      },
+    });
+
+    // Email content
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: "jalinahirushan2002@gmail.com", // Your receiving email
+      subject: `Portfolio Contact: ${formData.subject}`,
+      html: `
+        <h3>New message from your portfolio contact form</h3>
+        <p><strong>Name:</strong> ${formData.name}</p>
+        <p><strong>Email:</strong> ${formData.email}</p>
+        <p><strong>Subject:</strong> ${formData.subject}</p>
+        <p><strong>Message:</strong></p>
+        <p>${formData.message.replace(/\n/g, "<br>")}</p>
+      `,
+    };
+
+    // Send email
+    await transporter.sendMail(mailOptions);
+    return { success: true, message: "Email sent successfully!" };
+  } catch (error) {
+    console.error("Error sending email:", error);
+    return {
+      success: false,
+      message: "Failed to send email. Please try again later.",
+    };
   }
 }

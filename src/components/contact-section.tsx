@@ -3,9 +3,10 @@
 import type React from "react";
 
 import { useRef, useState } from "react";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Github, Linkedin } from "lucide-react";
 import { useInView } from "@/lib/animations";
 import SectionHeading from "./section-heading";
+import { sendContactEmail } from "@/app/actions";
 
 export default function ContactSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -14,6 +15,13 @@ export default function ContactSection() {
     name: "",
     email: "",
     subject: "",
+    message: "",
+  });
+  const [status, setStatus] = useState<{
+    type: "idle" | "loading" | "success" | "error";
+    message: string;
+  }>({
+    type: "idle",
     message: "",
   });
 
@@ -26,19 +34,39 @@ export default function ContactSection() {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the form data to your backend
-    console.log("Form submitted:", formState);
-    // Reset form
-    setFormState({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    });
-    // Show success message
-    alert("Message sent successfully!");
+    setStatus({ type: "loading", message: "Sending your message..." });
+
+    try {
+      const result = await sendContactEmail(formState);
+
+      if (result.success) {
+        setStatus({
+          type: "success",
+          message: "Your message has been sent! I'll get back to you soon.",
+        });
+
+        // Reset form
+        setFormState({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+      } else {
+        setStatus({
+          type: "error",
+          message:
+            result.message || "Something went wrong. Please try again later.",
+        });
+      }
+    } catch (error) {
+      setStatus({
+        type: "error",
+        message: "An unexpected error occurred. Please try again later.",
+      });
+    }
   };
 
   return (
@@ -71,7 +99,7 @@ export default function ContactSection() {
               </div>
               <div>
                 <h4 className="text-lg font-medium text-white">Email</h4>
-                <p className="text-gray-400">your.email@example.com</p>
+                <p className="text-gray-400">jalinahirushan2002@gmail.com</p>
               </div>
             </div>
 
@@ -92,6 +120,36 @@ export default function ContactSection() {
               <div>
                 <h4 className="text-lg font-medium text-white">Location</h4>
                 <p className="text-gray-400">City, Country</p>
+              </div>
+            </div>
+
+            <div className="mt-8">
+              <h4 className="text-lg font-medium text-white mb-4">
+                Connect with me
+              </h4>
+              <div className="flex space-x-4">
+                <a
+                  href="https://github.com/yourusername"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-green-500/10 p-3 rounded-full text-green-500 hover:bg-green-500/20 transition-all duration-300"
+                >
+                  <Github className="h-6 w-6" />
+                </a>
+                <a
+                  href="https://linkedin.com/in/yourusername"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-green-500/10 p-3 rounded-full text-green-500 hover:bg-green-500/20 transition-all duration-300"
+                >
+                  <Linkedin className="h-6 w-6" />
+                </a>
+                <a
+                  href="mailto:jalinahirushan2002@gmail.com"
+                  className="bg-green-500/10 p-3 rounded-full text-green-500 hover:bg-green-500/20 transition-all duration-300"
+                >
+                  <Mail className="h-6 w-6" />
+                </a>
               </div>
             </div>
           </div>
@@ -168,6 +226,19 @@ export default function ContactSection() {
             Send Message
             <Send className="ml-2 h-4 w-4" />
           </button>
+          {status.type !== "idle" && (
+            <p
+              className={`text-sm mt-4 ${
+                status.type === "success"
+                  ? "text-green-500"
+                  : status.type === "error"
+                  ? "text-red-500"
+                  : "text-gray-400"
+              }`}
+            >
+              {status.message}
+            </p>
+          )}
         </form>
       </div>
     </section>
