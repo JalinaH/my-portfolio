@@ -12,7 +12,6 @@ import {
   Layers,
   Database,
   Server,
-  PenTool,
   Figma,
   GitBranch,
   Globe,

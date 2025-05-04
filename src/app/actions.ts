@@ -12,6 +12,15 @@ interface MediumPost {
   thumbnail?: string;
 }
 
+// Define a type for the Medium RSS item
+interface MediumRSSItem {
+  title: string;
+  link: string;
+  pubDate: string;
+  "content:encoded"?: string;
+  category?: string | string[];
+}
+
 export async function getMediumPosts(username: string): Promise<MediumPost[]> {
   try {
     // Fetch the RSS feed from Medium
@@ -35,7 +44,7 @@ export async function getMediumPosts(username: string): Promise<MediumPost[]> {
     const items = result.rss.channel.item;
 
     // Process the items
-    return (Array.isArray(items) ? items : [items]).map((item: any) => {
+    return (Array.isArray(items) ? items : [items]).map((item: MediumRSSItem) => {
       // Extract the first image from the content if available
       let thumbnail = undefined;
       const imgMatch = item["content:encoded"]?.match(

@@ -3,7 +3,7 @@
 import type React from "react";
 
 import { useRef, useState } from "react";
-import { Mail, Phone, MapPin, Send, Github, Linkedin } from "lucide-react";
+import { Mail, Send, Github, Linkedin } from "lucide-react";
 import { useInView } from "@/lib/animations";
 import SectionHeading from "./section-heading";
 import { sendContactEmail } from "@/app/actions";
@@ -61,7 +61,8 @@ export default function ContactSection() {
             result.message || "Something went wrong. Please try again later.",
         });
       }
-    } catch (error) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (_) {
       setStatus({
         type: "error",
         message: "An unexpected error occurred. Please try again later.",

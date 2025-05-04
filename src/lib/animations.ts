@@ -56,6 +56,8 @@ export function useInView(
   useEffect(() => {
     if (!ref.current) return;
 
+    const currentElement = ref.current; // Store ref.current in a variable
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsInView(entry.isIntersecting);
@@ -70,12 +72,10 @@ export function useInView(
       }
     );
 
-    observer.observe(ref.current);
+    observer.observe(currentElement);
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
+      observer.unobserve(currentElement); // Use the stored variable
     };
   }, [ref, options.once, options.threshold, options.rootMargin]);
 

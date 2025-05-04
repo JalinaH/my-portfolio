@@ -10,7 +10,7 @@ import { getMediumPosts } from "@/app/actions";
 interface BlogPost {
   title: string;
   content: string;
-  thumbnail: string;
+  thumbnail?: string; // Allow thumbnail to be optional
   pubDate: string;
   link: string;
 }
