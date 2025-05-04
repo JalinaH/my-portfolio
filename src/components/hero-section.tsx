@@ -5,7 +5,6 @@ import Image from "next/image";
 import { ArrowDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { typeText } from "@/lib/animations";
-import profileImage from "@/assets/image.png";
 
 export default function HeroSection() {
   const typingRef = useRef<HTMLSpanElement>(null);
@@ -103,7 +102,7 @@ export default function HeroSection() {
               <div className="absolute inset-2 overflow-hidden rounded-full z-20">
                 <div className="relative w-full h-full flex items-center justify-center">
                   <Image
-                    src={profileImage}
+                    src={"/image.png"}
                     alt="Jalina Hirushan"
                     className="object-contain max-w-[100%] max-h-[100%] scale-150"
                     width={500}
