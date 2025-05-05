@@ -1,129 +1,145 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
-import Image from "next/image";
-import { Calendar, ExternalLink } from "lucide-react";
-import SectionHeading from "./section-heading";
+import { useEffect, useRef, useState } from "react";
+import { ExternalLink } from "lucide-react";
 import { useInView } from "@/lib/animations";
-import { getMediumPosts } from "@/app/actions";
+import SectionHeading from "./section-heading";
+import MacBookFrame from "./MacBookFrame";
+import { fetchMediumPosts } from "@/lib/utils";
 
-interface BlogPost {
+// Define the Blog interface
+interface Blog {
   title: string;
-  content: string;
-  thumbnail?: string; // Allow thumbnail to be optional
-  pubDate: string;
-  link: string;
+  description: string;
+  imageUrl: string;
+  url: string;
+  date: string;
+  tags: string[];
 }
 
-export default function BlogsSection() {
+// Replace with your Medium username
+const MEDIUM_USERNAME = "jalinahirushan2002";
+
+export default function BlogSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { once: true, threshold: 0.2 });
-  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const isInView = useInView(sectionRef, { once: true, threshold: 0.1 });
+  const [blogs, setBlogs] = useState<Blog[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    async function fetchPosts() {
+    async function loadMediumPosts() {
       try {
         setIsLoading(true);
-        // Replace 'yourusername' with your actual Medium username
-        const posts = await getMediumPosts("jalinahirushan2002");
-        setBlogPosts(posts); // Get the first 3 posts
-      } catch (err) {
-        console.error("Failed to fetch Medium posts:", err);
-        setError("Failed to load blog posts. Please try again later.");
+        const posts = await fetchMediumPosts(MEDIUM_USERNAME);
+        
+        if (posts.length > 0) {
+          setBlogs(posts);
+        } else {
+          // Fallback to example blog posts if no Medium posts found
+          setBlogs([
+            {
+              title: "How to Build a Responsive Website with Tailwind CSS",
+              description:
+                "Learn how to create a fully responsive website using Tailwind CSS, a utility-first CSS framework that makes styling your projects a breeze.",
+              imageUrl: "/placeholder.svg?height=300&width=500",
+              url: "https://medium.com/",
+              date: "June 15, 2023",
+              tags: ["Tailwind CSS", "Responsive Design", "Web Development"],
+            },
+            {
+              title: "Getting Started with React Hooks",
+              description:
+                "An introduction to React Hooks and how they can simplify your React components while making them more reusable and maintainable.",
+              imageUrl: "/placeholder.svg?height=300&width=500",
+              url: "https://medium.com/",
+              date: "May 22, 2023",
+              tags: ["React", "Hooks", "JavaScript"],
+            },
+            {
+              title: "The Future of Web Development: What to Expect in 2024",
+              description:
+                "Explore the upcoming trends and technologies that will shape the future of web development in the coming year.",
+              imageUrl: "/placeholder.svg?height=300&width=500",
+              url: "https://medium.com/",
+              date: "April 10, 2023",
+              tags: ["Web Development", "Future Trends", "Technology"],
+            },
+          ]);
+        }
+      } catch (error) {
+        console.error("Failed to load Medium posts:", error);
       } finally {
         setIsLoading(false);
       }
     }
 
-    fetchPosts();
+    loadMediumPosts();
   }, []);
-
-  // Fallback content in case of error or while loading
-  const fallbackPosts: BlogPost[] = [
-    {
-      title: "How to Build a Responsive Website with Tailwind CSS",
-      content:
-        "Learn how to create a fully responsive website using Tailwind CSS, a utility-first CSS framework that makes styling your projects a breeze.",
-      thumbnail: "/placeholder.svg?height=300&width=500",
-      pubDate: "June 15, 2023",
-      link: "https://medium.com/",
-    },
-    {
-      title: "Getting Started with React Hooks",
-      content:
-        "An introduction to React Hooks and how they can simplify your React components while making them more reusable and maintainable.",
-      thumbnail: "/placeholder.svg?height=300&width=500",
-      pubDate: "May 22, 2023",
-      link: "https://medium.com/",
-    },
-    {
-      title: "The Future of Web Development: What to Expect in 2024",
-      content:
-        "Explore the upcoming trends and technologies that will shape the future of web development in the coming year.",
-      thumbnail: "/placeholder.svg?height=300&width=500",
-      pubDate: "April 10, 2023",
-      link: "https://medium.com/",
-    },
-  ];
-
-  // Use fallback posts if loading or error
-  const displayPosts =
-    isLoading || error || blogPosts.length === 0 ? fallbackPosts : blogPosts;
 
   return (
     <section
-      id="blogs"
+      id="blog"
       ref={sectionRef}
       className="py-20 min-h-screen flex flex-col justify-center"
     >
-      <SectionHeading title="Medium Blogs" />
+      <SectionHeading title="Blog" />
 
-      {error && (
-        <div className="text-red-500 mb-8 p-4 bg-red-500/10 rounded-lg">
-          {error}
+      {isLoading ? (
+        <div className="flex justify-center items-center h-64">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-green-500"></div>
+        </div>
+      ) : (
+        <div className="grid md:grid-cols-2 gap-8">
+          {blogs.map((blog, index) => (
+            <a
+              key={index}
+              href={blog.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`block group`}
+            >
+              <div
+                className={`bg-gray-900/50 rounded-xl overflow-hidden border border-gray-800 hover:border-green-500/50 transition-all duration-500 transform hover:-translate-y-2 ${
+                  isInView
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-20"
+                }`}
+                style={{ transitionDelay: `${index * 200}ms` }}
+              >
+                <div className="relative overflow-hidden">
+                  {/* CSS-based MacBook Frame for blog posts */}
+                  <MacBookFrame imageUrl={blog.imageUrl} />
+                </div>
+
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-2 text-green-500 group-hover:text-green-400 transition-colors">
+                    {blog.title}
+                  </h3>
+                  <p className="text-gray-300 mb-4 line-clamp-3">
+                    {blog.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {blog.tags.map((tag, tagIndex) => (
+                      <span
+                        key={tagIndex}
+                        className="bg-green-500/10 text-green-500 text-xs px-3 py-1 rounded-full"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm text-gray-400">{blog.date}</span>
+                    <span className="flex items-center text-gray-300 group-hover:text-green-500 transition-colors">
+                      Read More <ExternalLink className="h-4 w-4 ml-1" />
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          ))}
         </div>
       )}
-
-      <div className="grid md:grid-cols-3 gap-8">
-        {displayPosts.map((post, index) => (
-          <a
-            key={index}
-            href={post.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`group bg-gray-900/50 rounded-xl overflow-hidden border border-gray-800 hover:border-green-500/50 transition-all duration-500 transform ${
-              isInView
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-20"
-            } hover:-translate-y-2`}
-            style={{ transitionDelay: `${index * 200}ms` }}
-          >
-            <div className="relative h-48 overflow-hidden">
-              <Image
-                src={post.thumbnail || "/placeholder.svg"}
-                alt={post.title}
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-110"
-              />
-            </div>
-            <div className="p-6">
-              <div className="flex items-center text-sm text-gray-400 mb-3">
-                <Calendar className="h-4 w-4 mr-1" />
-                <span>{post.pubDate}</span>
-              </div>
-              <h3 className="text-xl font-bold mb-2 text-white group-hover:text-green-500 transition-colors">
-                {post.title}
-              </h3>
-              <p className="text-gray-300">{post.content}</p>
-              <div className="mt-4 text-green-500 font-medium group-hover:underline flex items-center">
-                Read More <ExternalLink className="ml-1 h-4 w-4" />
-              </div>
-            </div>
-          </a>
-        ))}
-      </div>
     </section>
   );
 }

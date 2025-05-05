@@ -1,160 +1,57 @@
 "use client";
 
-import type React from "react";
-
 import { useRef } from "react";
 import SectionHeading from "./section-heading";
 import { useInView } from "@/lib/animations";
-import {
-  Code2,
-  FileJson,
-  Braces,
-  Layers,
-  Database,
-  Server,
-  Figma,
-  GitBranch,
-  Globe,
-  Cpu,
-  Coffee,
-  Hash,
-  Target,
-  Smartphone,
-} from "lucide-react";
+import SkillIcon from "./SkillIcon";
 
+// Define the Skill interface
 interface Skill {
   name: string;
-  icon: React.ReactNode;
-  category:
-    | "languages"
-    | "frontend"
-    | "backend"
-    | "database"
-    | "design"
-    | "other";
+  icon: string;
 }
 
-const skillsData: Skill[] = [
-  // Programming Languages
-  {
-    name: "JavaScript",
-    icon: <FileJson className="h-10 w-10" />,
-    category: "languages",
-  },
-  {
-    name: "TypeScript",
-    icon: <Braces className="h-10 w-10" />,
-    category: "languages",
-  },
-  {
-    name: "Python",
-    icon: <Code2 className="h-10 w-10" />,
-    category: "languages",
-  },
-  {
-    name: "Java",
-    icon: <Coffee className="h-10 w-10" />,
-    category: "languages",
-  },
-  {
-    name: "C",
-    icon: <Hash className="h-10 w-10" />,
-    category: "languages",
-  },
-  {
-    name: "C#",
-    icon: <Hash className="h-10 w-10" />,
-    category: "languages",
-  },
-  {
-    name: "Dart",
-    icon: <Target className="h-10 w-10" />,
-    category: "languages",
-  },
-
-  // Frontend
-  {
-    name: "HTML/CSS",
-    icon: <Code2 className="h-10 w-10" />,
-    category: "frontend",
-  },
-  {
-    name: "React",
-    icon: <Layers className="h-10 w-10" />,
-    category: "frontend",
-  },
-  {
-    name: "Next.js",
-    icon: <Globe className="h-10 w-10" />,
-    category: "frontend",
-  },
-  {
-    name: "Flutter",
-    icon: <Smartphone className="h-10 w-10" />,
-    category: "frontend",
-  },
-  {
-    name: "React Native",
-    icon: <Smartphone className="h-10 w-10" />,
-    category: "frontend",
-  },
-  {
-    name: "Vue.js",
-    icon: <Layers className="h-10 w-10" />,
-    category: "frontend",
-  },
-
-  // Backend
-  {
-    name: "Node.js",
-    icon: <Server className="h-10 w-10" />,
-    category: "backend",
-  },
-  {
-    name: "Express",
-    icon: <Cpu className="h-10 w-10" />,
-    category: "backend",
-  },
-
-  // Database
-  {
-    name: "MongoDB",
-    icon: <Database className="h-10 w-10" />,
-    category: "database",
-  },
-  {
-    name: "SQL",
-    icon: <Database className="h-10 w-10" />,
-    category: "database",
-  },
-
-  // Design
-  {
-    name: "Figma",
-    icon: <Figma className="h-10 w-10" />,
-    category: "design",
-  },
-
-  // Other
-  {
-    name: "Git",
-    icon: <GitBranch className="h-10 w-10" />,
-    category: "other",
-  },
-];
+// Define skills by category
+const skillsByCategory = {
+  "Programming Languages": [
+    { name: "C", icon: "/skills/c.svg" },
+    { name: "C#", icon: "/skills/csharp.svg" },
+    { name: "Python", icon: "/skills/python.svg" },
+    { name: "JavaScript", icon: "/skills/javascript.svg" },
+    { name: "TypeScript", icon: "/skills/typescript.svg" },
+    { name: "Java", icon: "/skills/java.svg" },
+    { name: "Dart", icon: "/skills/dart.svg" },
+  ],
+  Frontend: [
+    { name: "HTML", icon: "/skills/html.svg" },
+    { name: "CSS", icon: "/skills/css.svg" },
+    { name: "Tailwind CSS", icon: "/skills/tailwindcss.svg" },
+    { name: "React", icon: "/skills/react.svg" },
+    { name: "Next.js", icon: "/skills/nextjs.svg" },
+    { name: "React Native", icon: "/skills/react.svg" },
+    { name: "Flutter", icon: "/skills/flutter.svg" },
+    { name: "Vue.js", icon: "/skills/vuejs.svg" },
+  ],
+  Backend: [
+    { name: "Node.js", icon: "/skills/nodejs.svg" },
+    { name: "Express.js", icon: "/skills/express.svg" },
+    { name: "Firebase", icon: "/skills/firebase.svg" },
+  ],
+  Databases: [
+    { name: "MongoDB", icon: "/skills/mongodb.svg" },
+    { name: "MySQL", icon: "/skills/mysql.svg" },
+  ],
+  Other: [
+    { name: "Figma", icon: "/skills/figma.svg" },
+    { name: "Git", icon: "/skills/git.svg" },
+    { name: "GitHub", icon: "/skills/github.svg" },
+    { name: "VS Code", icon: "/skills/vscode.svg" },
+  ],
+};
 
 export default function SkillsSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { once: true, threshold: 0.2 });
-
-  const categories = [
-    { id: "languages", name: "Programming Languages" },
-    { id: "frontend", name: "Frontend" },
-    { id: "backend", name: "Backend" },
-    { id: "database", name: "Databases" },
-    { id: "design", name: "Design" },
-    { id: "other", name: "Other" },
-  ];
+  const isInView = useInView(sectionRef, { once: true, threshold: 0.1 });
 
   return (
     <section
@@ -164,41 +61,40 @@ export default function SkillsSection() {
     >
       <SectionHeading title="Skills" />
 
-      <div className="grid grid-cols-1 gap-10">
-        {categories.map((category) => (
-          <div
-            key={category.id}
-            className={`transition-all duration-700 transform ${
-              isInView
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-10"
-            }`}
-            style={{
-              transitionDelay: `${
-                categories.findIndex((c) => c.id === category.id) * 200
-              }ms`,
-            }}
-          >
-            <h3 className="text-xl font-semibold mb-6 text-green-500 border-b border-green-500/30 pb-2">
-              {category.name}
-            </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-              {skillsData
-                .filter((skill) => skill.category === category.id)
-                .map((skill, index) => (
+      <div className="space-y-12">
+        {Object.entries(skillsByCategory).map(
+          ([category, skills], categoryIndex) => (
+            <div
+              key={category}
+              className={`${
+                isInView
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-20"
+              } transition-all duration-700 ease-out`}
+              style={{ transitionDelay: `${categoryIndex * 100}ms` }}
+            >
+              <h3 className="text-xl font-bold mb-6 text-green-500">
+                {category}
+              </h3>
+
+              <div className="flex flex-wrap gap-4">
+                {skills.map((skill, skillIndex) => (
                   <div
-                    key={index}
-                    className="flex flex-col items-center justify-center p-4 bg-gray-900/30 rounded-lg hover:bg-gray-800/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-green-500/10"
+                    key={skillIndex}
+                    className={`transition-all duration-500`}
+                    style={{
+                      transitionDelay: `${
+                        categoryIndex * 100 + skillIndex * 50
+                      }ms`,
+                    }}
                   >
-                    <div className="text-green-500 mb-3">{skill.icon}</div>
-                    <span className="text-gray-300 text-sm font-medium text-center">
-                      {skill.name}
-                    </span>
+                    <SkillIcon name={skill.name} icon={skill.icon} />
                   </div>
                 ))}
+              </div>
             </div>
-          </div>
-        ))}
+          )
+        )}
       </div>
     </section>
   );

@@ -1,10 +1,11 @@
 "use client";
 
 import { useRef } from "react";
-import Image from "next/image";
 import { ExternalLink, Github } from "lucide-react";
 import { useInView } from "@/lib/animations";
 import SectionHeading from "./section-heading";
+import MacBookFrame from "./MacBookFrame";
+import MobileFrame from "./MobileFrame";
 
 interface Project {
   title: string;
@@ -15,6 +16,7 @@ interface Project {
   githubUrl?: string;
   projectType: "Group" | "Individual";
   role?: string; // Only required for group projects
+  isMobile?: boolean; // New property to indicate if project is mobile
 }
 
 const projectsData: Project[] = [
@@ -28,6 +30,7 @@ const projectsData: Project[] = [
     githubUrl: "https://github.com/rithakith/RecipeApp",
     projectType: "Group",
     role: "Frontend Developer",
+    isMobile: false,
   },
   {
     title: "Smart Cricket Trainee - CricBOT Mobile App",
@@ -37,6 +40,7 @@ const projectsData: Project[] = [
     tags: ["React Native", "Tailwind CSS", "Firebase", "IoT"],
     githubUrl: "https://github.com/JalinaH/CricBOT",
     projectType: "Individual",
+    isMobile: true, // This is a mobile project
   },
   {
     title: "Smart Cricket Trainee - CricBOT",
@@ -47,6 +51,7 @@ const projectsData: Project[] = [
     githubUrl:
       "https://github.com/JalinaH/CricBOT---Automated-Cricket-Practice-Machine",
     projectType: "Group",
+    isMobile: false,
   },
   {
     title: "DebateX - Revolutionizing debate platform",
@@ -66,6 +71,7 @@ const projectsData: Project[] = [
     githubUrl: "https://github.com/VinukaVilhan/DebateXt",
     projectType: "Group",
     role: "Backend Developer",
+    isMobile: false,
   },
   {
     title: "CeylonRides - Vehicle Rental Platform",
@@ -76,6 +82,7 @@ const projectsData: Project[] = [
     liveUrl: "https://ceylonrides.netlify.app",
     githubUrl: "https://github.com/JalinaH/CeylonRides",
     projectType: "Individual",
+    isMobile: false,
   },
 ];
 
@@ -102,14 +109,15 @@ export default function ProjectsSection() {
             }`}
             style={{ transitionDelay: `${index * 200}ms` }}
           >
-            <div className="relative h-48 overflow-hidden">
-              <Image
-                src={project.image || "/placeholder.svg"}
-                alt={project.title}
-                fill
-                className="object-cover transition-transform duration-500 hover:scale-110"
-              />
+            <div className="relative overflow-hidden">
+              {/* Conditionally render either the MacBook or Mobile frame based on project type */}
+              {project.isMobile ? (
+                <MobileFrame imageUrl={project.image || "/placeholder.svg"} />
+              ) : (
+                <MacBookFrame imageUrl={project.image || "/placeholder.svg"} />
+              )}
             </div>
+
             <div className="p-6">
               <h3 className="text-xl font-bold mb-2 text-green-500">
                 {project.title}
@@ -127,6 +135,12 @@ export default function ProjectsSection() {
                 {project.projectType === "Group" && project.role && (
                   <span className="bg-green-500/20 text-green-400 px-2 py-0.5 rounded-full ml-2">
                     {project.role}
+                  </span>
+                )}
+                {/* Add a badge for mobile projects */}
+                {project.isMobile && (
+                  <span className="bg-orange-500/20 text-orange-400 px-2 py-0.5 rounded-full ml-2">
+                    Mobile App
                   </span>
                 )}
               </div>
