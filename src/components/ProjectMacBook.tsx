@@ -110,11 +110,12 @@ function MacBookModel({ imageUrl }: { imageUrl: string }) {
 
     loadModel();
 
-    // Cleanup function
+    // Cleanup function - Save a reference to the current modelRef value
+    const currentModelRef = modelRef.current;
     return () => {
-      if (modelRef.current) {
-        while (modelRef.current.children.length > 0) {
-          modelRef.current.remove(modelRef.current.children[0]);
+      if (currentModelRef) {
+        while (currentModelRef.children.length > 0) {
+          currentModelRef.remove(currentModelRef.children[0]);
         }
       }
     };

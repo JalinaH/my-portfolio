@@ -9,6 +9,18 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 /**
+ * Interface for Medium post items
+ */
+interface MediumItem {
+  title: string;
+  content: string;
+  description: string;
+  link: string;
+  pubDate: string;
+  categories: string[];
+}
+
+/**
  * Fetches blog posts from a Medium RSS feed
  * @param username The Medium username to fetch posts from
  * @returns Array of formatted blog posts
@@ -30,7 +42,7 @@ export async function fetchMediumPosts(username: string) {
       throw new Error("Invalid response from RSS feed");
     }
 
-    return data.items.map((item: any) => {
+    return data.items.map((item: MediumItem) => {
       // Extract first image from content or use placeholder
       const imgRegex = /<img[^>]+src="([^">]+)"/;
       const imgMatch = item.content.match(imgRegex);

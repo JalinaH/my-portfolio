@@ -6,10 +6,6 @@ import { useInView } from "@/lib/animations";
 import SkillIcon from "./SkillIcon";
 
 // Define the Skill interface
-interface Skill {
-  name: string;
-  icon: string;
-}
 
 // Define skills by category
 const skillsByCategory = {
@@ -28,7 +24,7 @@ const skillsByCategory = {
     { name: "Tailwind CSS", icon: "/skills/tailwindcss.svg" },
     { name: "React", icon: "/skills/react.svg" },
     { name: "Next.js", icon: "/skills/nextjs.svg" },
-    { name: "React Native", icon: "/skills/react.svg" },
+    { name: "React Native (Mobile)", icon: "/skills/react.svg" },
     { name: "Flutter", icon: "/skills/flutter.svg" },
     { name: "Vue.js", icon: "/skills/vuejs.svg" },
   ],
