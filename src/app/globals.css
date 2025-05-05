@@ -25,7 +25,12 @@
   --radius: 0.5rem;
 }
 
-html {
+/* Mobile responsiveness fixes */
+html,
+body {
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
   scroll-behavior: smooth;
 }
 
