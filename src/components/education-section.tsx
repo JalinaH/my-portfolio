@@ -17,8 +17,7 @@ const educationData: Education[] = [
     degree: "GCE O/L",
     institution: "Malambe Boys' Model School",
     duration: "2017",
-    description:
-      "9As",
+    description: "9As",
   },
   {
     degree: "GCE A/L",
@@ -38,7 +37,10 @@ const educationData: Education[] = [
 
 export default function EducationSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { once: true, threshold: 0.2 });
+  const isInView = useInView(sectionRef as React.RefObject<Element>, {
+    once: true,
+    threshold: 0.2,
+  });
 
   return (
     <section

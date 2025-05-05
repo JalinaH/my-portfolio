@@ -22,7 +22,10 @@ const MEDIUM_USERNAME = "jalinahirushan2002";
 
 export default function BlogSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { once: true, threshold: 0.1 });
+  const isInView = useInView(sectionRef as React.RefObject<Element>, {
+    once: true,
+    threshold: 0.1,
+  });
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -31,7 +34,7 @@ export default function BlogSection() {
       try {
         setIsLoading(true);
         const posts = await fetchMediumPosts(MEDIUM_USERNAME);
-        
+
         if (posts.length > 0) {
           setBlogs(posts);
         } else {

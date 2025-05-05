@@ -1,11 +1,13 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { ExternalLink, Github } from "lucide-react";
 import { useInView } from "@/lib/animations";
 import SectionHeading from "./section-heading";
 import MacBookFrame from "./MacBookFrame";
 import MobileFrame from "./MobileFrame";
+
+type ProjectCategory = "all" | "individual" | "group";
 
 interface Project {
   title: string;
@@ -104,7 +106,14 @@ const projectsData: Project[] = [
 
 export default function ProjectsSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { once: true, threshold: 0.1 });
+  const isInView = useInView(sectionRef as React.RefObject<Element>, {
+    once: true,
+    threshold: 0.1,
+  });
+  const [activeTab, setActiveTab] = useState<ProjectCategory>("all");
+  const [filteredProjects, setFilteredProjects] =
+    useState<Project[]>(projectsData);
+  const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
 
   return (
     <section

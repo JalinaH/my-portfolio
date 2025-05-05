@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import SectionHeading from "./section-heading";
 import { useInView } from "@/lib/animations";
 import SkillIcon from "./SkillIcon";
@@ -47,7 +47,10 @@ const skillsByCategory = {
 
 export default function SkillsSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { once: true, threshold: 0.1 });
+  const isInView = useInView(sectionRef as React.RefObject<Element>, {
+    once: true,
+    threshold: 0.1,
+  });
 
   return (
     <section
