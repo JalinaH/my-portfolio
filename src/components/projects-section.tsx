@@ -1,13 +1,11 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { ExternalLink, Github } from "lucide-react";
 import { useInView } from "@/lib/animations";
 import SectionHeading from "./section-heading";
 import MacBookFrame from "./MacBookFrame";
 import MobileFrame from "./MobileFrame";
-
-type ProjectCategory = "all" | "individual" | "group";
 
 interface Project {
   title: string;
@@ -110,10 +108,6 @@ export default function ProjectsSection() {
     once: true,
     threshold: 0.1,
   });
-  const [activeTab, setActiveTab] = useState<ProjectCategory>("all");
-  const [filteredProjects, setFilteredProjects] =
-    useState<Project[]>(projectsData);
-  const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
 
   return (
     <section

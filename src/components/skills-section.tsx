@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import SectionHeading from "./section-heading";
 import { useInView } from "@/lib/animations";
 import SkillIcon from "./SkillIcon";
