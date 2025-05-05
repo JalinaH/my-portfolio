@@ -6,10 +6,6 @@ import { useInView } from "@/lib/animations";
 import SkillIcon from "./SkillIcon";
 
 // Define the Skill interface
-interface Skill {
-  name: string;
-  icon: string;
-}
 
 // Define skills by category
 const skillsByCategory = {
