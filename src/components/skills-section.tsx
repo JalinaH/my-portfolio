@@ -5,7 +5,6 @@ import SectionHeading from "./section-heading";
 import { useInView } from "@/lib/animations";
 import SkillIcon from "./SkillIcon";
 
-// Define the Skill interface
 
 // Define skills by category
 const skillsByCategory = {

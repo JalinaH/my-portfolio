@@ -11,6 +11,10 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Jalina Hirushan", // Consider updating this
   description: "This is my portfolio", // Consider updating this
+  icons: {
+    icon: "/favicon.png",
+    apple: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
@@ -22,9 +26,7 @@ export default function RootLayout({
     <html lang="en">
       {/* Use poppins.className to apply the font globally */}
       {/* Or use poppins.variable if you prefer CSS variables */}
-      <body className={`${poppins.className} antialiased`}>
-        {children}
-      </body>
+      <body className={`${poppins.className} antialiased`}>{children}</body>
     </html>
   );
 }
