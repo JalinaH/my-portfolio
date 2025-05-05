@@ -28,7 +28,7 @@ const skillsByCategory = {
     { name: "Tailwind CSS", icon: "/skills/tailwindcss.svg" },
     { name: "React", icon: "/skills/react.svg" },
     { name: "Next.js", icon: "/skills/nextjs.svg" },
-    { name: "React Native", icon: "/skills/react.svg" },
+    { name: "React Native (Mobile)", icon: "/skills/react.svg" },
     { name: "Flutter", icon: "/skills/flutter.svg" },
     { name: "Vue.js", icon: "/skills/vuejs.svg" },
   ],

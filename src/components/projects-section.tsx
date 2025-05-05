@@ -84,6 +84,22 @@ const projectsData: Project[] = [
     projectType: "Individual",
     isMobile: false,
   },
+  {
+    title: "Personal Portfolio",
+    description:
+      "A modern, responsive portfolio website built with Next.js and TailwindCSS. Features include smooth scrolling, animated sections, interactive 3D models, skill categorization, and mobile-responsive design. The portfolio showcases my projects, skills, and education in an engaging user interface with a clean, professional aesthetic.",
+    image: "/portfolio.png",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Framer Motion",
+      "3D Models",
+    ],
+    liveUrl: "https://jalinahirushan.vercel.app/",
+    projectType: "Individual",
+    isMobile: false,
+  },
 ];
 
 export default function ProjectsSection() {
