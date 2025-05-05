@@ -110,7 +110,7 @@ export default function ContactSection() {
               </h4>
               <div className="flex space-x-4">
                 <a
-                  href="https://github.com/yourusername"
+                  href="https://github.com/JalinaH"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-green-500/10 p-3 rounded-full text-green-500 hover:bg-green-500/20 transition-all duration-300"
@@ -118,7 +118,7 @@ export default function ContactSection() {
                   <Github className="h-6 w-6" />
                 </a>
                 <a
-                  href="https://linkedin.com/in/yourusername"
+                  href="https://linkedin.com/in/jalinahirushan"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-green-500/10 p-3 rounded-full text-green-500 hover:bg-green-500/20 transition-all duration-300"
