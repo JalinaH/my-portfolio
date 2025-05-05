@@ -81,7 +81,7 @@ export default function BlogSection() {
 
   return (
     <section
-      id="blog"
+      id="blogs"
       ref={sectionRef}
       className="py-20 min-h-screen flex flex-col justify-center"
     >

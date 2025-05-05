@@ -24,7 +24,7 @@ export default function HeroSection() {
   return (
     <section
       id="home"
-      className="min-h-screen flex flex-col justify-center pt-16"
+      className="min-h-screen flex flex-col justify-center pt-16 relative"
     >
       <div className="grid md:grid-cols-2 gap-8 items-center">
         <div
