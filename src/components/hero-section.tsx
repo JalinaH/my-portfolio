@@ -45,7 +45,7 @@ export default function HeroSection() {
             technologies, solving real-world problems, and working
             collaboratively to bring ideas to life.
           </p>
-          <div className="flex space-x-4 pt-4">
+          <div className="flex flex-wrap gap-4 pt-4">
             <a
               href="#contact"
               className="bg-green-500 hover:bg-green-600 text-black font-medium py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105"
@@ -69,6 +69,13 @@ export default function HeroSection() {
               }}
             >
               View Work
+            </a>
+            <a
+              href="/cv.pdf"
+              download="Jalina_Hirushan_CV.pdf"
+              className="border border-gray-400 text-gray-300 hover:bg-gray-400/10 hover:border-gray-300 font-medium py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105"
+            >
+              Download CV
             </a>
           </div>
         </div>
