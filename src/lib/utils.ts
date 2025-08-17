@@ -43,12 +43,32 @@ export async function fetchMediumPosts(username: string) {
     }
 
     return data.items.map((item: MediumItem) => {
-      // Extract first image from content or use placeholder
-      const imgRegex = /<img[^>]+src="([^">]+)"/;
+      // Try multiple ways to extract images from Medium content
+      let imageUrl = "/placeholder.svg";
+      
+      // Method 1: Look for img tags in content
+      const imgRegex = /<img[^>]+src=["']([^"']+)["'][^>]*>/i;
       const imgMatch = item.content.match(imgRegex);
-      const imageUrl = imgMatch
-        ? imgMatch[1]
-        : "/placeholder.svg?height=300&width=500";
+      
+      if (imgMatch && imgMatch[1]) {
+        imageUrl = imgMatch[1];
+      } else {
+        // Method 2: Look for Medium's CDN images in content
+        const mediumImgRegex = /https:\/\/cdn-images-\d+\.medium\.com\/[^"\s]+/i;
+        const mediumMatch = item.content.match(mediumImgRegex);
+        
+        if (mediumMatch) {
+          imageUrl = mediumMatch[0];
+        } else {
+          // Method 3: Look for any https image URL
+          const generalImgRegex = /https:\/\/[^"\s]+\.(jpg|jpeg|png|gif|webp)/i;
+          const generalMatch = item.content.match(generalImgRegex);
+          
+          if (generalMatch) {
+            imageUrl = generalMatch[0];
+          }
+        }
+      }
 
       // Strip HTML from description and truncate
       const description =
