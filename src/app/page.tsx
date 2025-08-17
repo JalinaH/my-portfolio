@@ -5,6 +5,7 @@ import SkillsSection from "@/components/skills-section";
 import ProjectsSection from "@/components/projects-section";
 import ContactSection from "@/components/contact-section";
 import BlogsSection from "@/components/blog-section";
+import Chatbot from "@/components/chatbot";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
         <BlogsSection />
         <ContactSection />
       </div>
+      <Chatbot />
     </main>
   );
 }
