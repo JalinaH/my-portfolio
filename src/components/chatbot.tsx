@@ -70,7 +70,7 @@ export default function Chatbot() {
       } else {
         throw new Error(data.error || "Failed to send message");
       }
-    } catch (error) {
+    } catch {
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
         text: "Sorry, I'm having trouble responding right now. Please try again later.",
