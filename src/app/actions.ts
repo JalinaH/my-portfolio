@@ -79,7 +79,7 @@ export async function getMediumPosts(username: string): Promise<MediumPost[]> {
             ? item.category
             : [item.category]
           : [],
-        thumbnail: thumbnail || "/placeholder.svg?height=300&width=500",
+        thumbnail: thumbnail || "/placeholder.svg",
       };
     });
   } catch (error) {

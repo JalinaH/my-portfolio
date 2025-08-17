@@ -18,7 +18,7 @@ interface Blog {
 }
 
 // Replace with your Medium username
-const MEDIUM_USERNAME = "jalinahirushan2002";
+const MEDIUM_USERNAME = "jalinah";
 
 export default function BlogSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -44,7 +44,7 @@ export default function BlogSection() {
               title: "How to Build a Responsive Website with Tailwind CSS",
               description:
                 "Learn how to create a fully responsive website using Tailwind CSS, a utility-first CSS framework that makes styling your projects a breeze.",
-              imageUrl: "/placeholder.svg?height=300&width=500",
+              imageUrl: "/placeholder.svg",
               url: "https://medium.com/",
               date: "June 15, 2023",
               tags: ["Tailwind CSS", "Responsive Design", "Web Development"],
@@ -53,7 +53,7 @@ export default function BlogSection() {
               title: "Getting Started with React Hooks",
               description:
                 "An introduction to React Hooks and how they can simplify your React components while making them more reusable and maintainable.",
-              imageUrl: "/placeholder.svg?height=300&width=500",
+              imageUrl: "/placeholder.svg",
               url: "https://medium.com/",
               date: "May 22, 2023",
               tags: ["React", "Hooks", "JavaScript"],
@@ -62,7 +62,7 @@ export default function BlogSection() {
               title: "The Future of Web Development: What to Expect in 2024",
               description:
                 "Explore the upcoming trends and technologies that will shape the future of web development in the coming year.",
-              imageUrl: "/placeholder.svg?height=300&width=500",
+              imageUrl: "/placeholder.svg",
               url: "https://medium.com/",
               date: "April 10, 2023",
               tags: ["Web Development", "Future Trends", "Technology"],
