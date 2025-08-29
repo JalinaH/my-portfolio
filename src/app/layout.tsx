@@ -19,6 +19,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://itsjalina.me"),
   title: "Jalina Hirushan", // Consider updating this
   description: "This is my portfolio", // Consider updating this
   icons: {
