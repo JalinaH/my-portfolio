@@ -17,6 +17,7 @@ interface Project {
   projectType: "Group" | "Individual";
   role?: string; // Only required for group projects
   isMobile?: boolean; // New property to indicate if project is mobile
+  isTablet?: boolean; // New property to indicate if project is tablet
 }
 
 const projectsData: Project[] = [
@@ -85,6 +86,26 @@ const projectsData: Project[] = [
     isMobile: false,
   },
   {
+    title: "Pay Sheet Emailer",
+    description:
+      "A desktop application developed for the Finance Division of the University of Moratuwa to streamline monthly paysheet distribution. Built with Python and CustomTkinter, it features a modern multi-page UI with secure user authentication and role-based access control. The system automates email distribution of paysheets to all university employees with real-time status updates, delivery verification, and centralized settings management. This project demonstrates a real-world solution tailored to administrative workflows.",
+    image: "/1753926863994.jpeg", // You can add a specific image for this project later
+    tags: ["Python", "CustomTkinter", "SQLite", "Email Automation"],
+    projectType: "Group",
+    role: "Full Stack Developer",
+    isMobile: false,
+  },
+  {
+    title: "Land and Asset Valuation System",
+    description:
+      "A comprehensive full-stack application designed for land and asset valuation with advanced GIS capabilities. Led the complete development lifecycle from requirement gathering and planning to UI/UX design, development, and testing. The system features a mobile frontend built with Flutter for field data collection, a robust .NET backend for business logic, and integrated PostgreSQL/SQLite databases for data management. Includes GIS-based visualization powered by Mapbox for precise location mapping and asset visualization.",
+    image: "/2nd_yr.png", // You can add a specific image for this project later
+    tags: ["Flutter", ".NET", "PostgreSQL", "SQLite", "Mapbox", "GIS"],
+    projectType: "Group",
+    role: "Full Stack Developer",
+    isMobile: false,
+  },
+  {
     title: "Personal Portfolio",
     description:
       "A modern, responsive portfolio website built with Next.js and TailwindCSS. Features include smooth scrolling, animated sections, interactive 3D models, skill categorization, and mobile-responsive design. The portfolio showcases my projects, skills, and education in an engaging user interface with a clean, professional aesthetic.",
@@ -129,7 +150,6 @@ export default function ProjectsSection() {
             style={{ transitionDelay: `${index * 200}ms` }}
           >
             <div className="relative overflow-hidden">
-              {/* Conditionally render either the MacBook or Mobile frame based on project type */}
               {project.isMobile ? (
                 <MobileFrame imageUrl={project.image || "/placeholder.svg"} />
               ) : (
