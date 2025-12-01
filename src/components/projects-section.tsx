@@ -117,7 +117,7 @@ const projectsData: Project[] = [
       "Framer Motion",
       "3D Models",
     ],
-    liveUrl: "https://jalinahirushan.vercel.app/",
+    liveUrl: "https://itsjalina.me/",
     projectType: "Individual",
     isMobile: false,
   },
