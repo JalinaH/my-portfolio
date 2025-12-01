@@ -1,5 +1,49 @@
 # Projects
 
+## Land Asset Valuation System – Mobile GIS Application
+**Government Project** | Valuation Department  
+A comprehensive mobile-first Land & Asset Valuation System to digitize property assessment workflows. Replaced manual field operations with an integrated GIS-enabled mobile application supporting offline data collection and real-time synchronization.
+
+- **Tech Stack**: Flutter, ASP.NET Core 8.0, PostgreSQL, Mapbox SDK, JWT Authentication  
+- **Architecture**: Clean Architecture with BLoC pattern and Riverpod dependency injection  
+- **Key Achievements**:  
+  - Enhanced field efficiency by 60% through automated data capture and report generation  
+  - Improved data accuracy by 80% via real-time validation and GPS-based asset marking  
+  - Built robust offline functionality with automatic sync for uninterrupted field operations  
+  - Delivered multi-language support (English, Sinhala, Tamil)  
+- **Core Features**:  
+  - Interactive mapping with polygon drawing and area calculations  
+  - Complete asset management for land acquisition and property assessments  
+  - Sales and rental evidence collection with image upload  
+  - Automated valuation reports and rating card generation  
+  - Multi-environment deployment (dev/test/production)  
+- **Impact**:  
+  - Streamlined operations for District Valuers and assessment teams  
+  - Enabled real-time sync between field operations and centralized GIS systems  
+  - Improved transparency in land acquisition, taxation, and urban planning  
+  - Successfully deployed across government valuation departments  
+
+---
+
+## The Fuzzball Theorem – Exoplanet AI
+**Oct 2025** | NASA Space Apps Challenge 2025  
+An AI-powered web application that detects exoplanets from TESS (Transiting Exoplanet Survey Satellite) light curve data using machine learning and signal processing techniques.
+
+- **Tech Stack**: Next.js, TypeScript, Tailwind CSS, FastAPI, Python, XGBoost, HuggingFace  
+- **Features**:  
+  - TIC ID-based and CSV light curve analysis  
+  - Real-time transit detection with confidence metrics  
+  - Interactive 3D planet visualization  
+  - CI/CD pipelines via GitHub Actions  
+  - Box Least Squares (BLS) algorithm for feature extraction  
+  - XGBoost classification for exoplanet transit signal identification  
+- **Deployment**: Frontend on Vercel, Backend on HuggingFace Spaces  
+- **Live Demo**: [The Fuzzball Theorem](https://the-fuzzball-theorem-exoplanet-ai-f.vercel.app/)  
+- **GitHub**: [Repository](https://github.com/VishwaJaya01/the-fuzzball-theorem-exoplanet-ai)  
+- **Role**: Full Stack Developer  
+
+---
+
 ## CeylonRides – Vehicle Rental Platform
 **Mar 2025 – Apr 2025** | Solo Project  
 A complete vehicle rental web application serving Tourists, Drivers, and Administrators.  
