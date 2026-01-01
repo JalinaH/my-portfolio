@@ -1,14 +1,14 @@
 import type { Metadata, Viewport } from "next";
-import { Poppins } from "next/font/google";
+import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 
-const poppins = Poppins({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"], // Add the weights you need
-  variable: "--font-poppins", // Optional: if you want to use it as a CSS variable
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-space-grotesk",
 });
 
 export const viewport: Viewport = {
@@ -20,8 +20,9 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://itsjalina.me"),
-  title: "Jalina Hirushan", // Consider updating this
-  description: "This is my portfolio", // Consider updating this
+  title: "Jalina Hirushan | Digital Product Engineer",
+  description:
+    "Portfolio of Jalina Hirushan — crafting web, mobile, and IoT experiences with thoughtful engineering and bold design.",
   icons: {
     icon: "/favicon.png",
     apple: "/favicon.png",
@@ -35,9 +36,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      {/* Use poppins.className to apply the font globally */}
-      {/* Or use poppins.variable if you prefer CSS variables */}
-      <body className={`${poppins.className} antialiased`}>
+      <body className={`${spaceGrotesk.className} antialiased bg-slate-950`}>
         {children}
         <SpeedInsights />
         <Analytics />

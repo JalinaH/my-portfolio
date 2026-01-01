@@ -134,22 +134,23 @@ export default function ProjectsSection() {
     <section
       id="projects"
       ref={sectionRef}
-      className="py-20 min-h-screen flex flex-col justify-center"
+      className="flex min-h-screen flex-col justify-center py-24"
     >
       <SectionHeading title="Projects" />
 
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid gap-8 md:grid-cols-2">
         {projectsData.map((project, index) => (
           <div
             key={index}
-            className={`bg-gray-900/50 rounded-xl overflow-hidden border border-gray-800 hover:border-green-500/50 transition-all duration-500 transform hover:-translate-y-2 ${
+            className={`group relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-slate-900/70 via-slate-900/50 to-slate-950 p-5 shadow-[0_30px_120px_-60px_rgba(34,211,238,0.75)] transition-all duration-700 hover:-translate-y-2 hover:border-cyan-300/50 ${
               isInView
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-20"
+                ? "translate-y-0 opacity-100"
+                : "translate-y-10 opacity-0"
             }`}
-            style={{ transitionDelay: `${index * 200}ms` }}
+            style={{ transitionDelay: `${index * 140}ms` }}
           >
-            <div className="relative overflow-hidden">
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(34,211,238,0.08),transparent_40%),radial-gradient(circle_at_100%_100%,rgba(168,85,247,0.08),transparent_35%)] opacity-70" />
+            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-3">
               {project.isMobile ? (
                 <MobileFrame imageUrl={project.image || "/placeholder.svg"} />
               ) : (
@@ -157,52 +158,53 @@ export default function ProjectsSection() {
               )}
             </div>
 
-            <div className="p-6">
-              <h3 className="text-xl font-bold mb-2 text-green-500">
-                {project.title}
-              </h3>
-              <div className="flex items-center mb-2 text-sm">
+            <div className="relative mt-4 space-y-4">
+              <div className="flex flex-wrap items-center gap-2">
                 <span
-                  className={`${
+                  className={`rounded-full border px-3 py-1 text-xs font-semibold ${
                     project.projectType === "Group"
-                      ? "bg-blue-500/20 text-blue-400"
-                      : "bg-purple-500/20 text-purple-400"
-                  } px-2 py-0.5 rounded-full`}
+                      ? "border-blue-300/40 bg-blue-500/10 text-blue-100"
+                      : "border-purple-300/40 bg-purple-500/10 text-purple-100"
+                  }`}
                 >
-                  {project.projectType} Project
+                  {project.projectType} project
                 </span>
                 {project.projectType === "Group" && project.role && (
-                  <span className="bg-green-500/20 text-green-400 px-2 py-0.5 rounded-full ml-2">
+                  <span className="rounded-full border border-cyan-300/30 bg-cyan-500/10 px-3 py-1 text-xs font-semibold text-cyan-100">
                     {project.role}
                   </span>
                 )}
-                {/* Add a badge for mobile projects */}
                 {project.isMobile && (
-                  <span className="bg-orange-500/20 text-orange-400 px-2 py-0.5 rounded-full ml-2">
-                    Mobile App
+                  <span className="rounded-full border border-emerald-300/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-100">
+                    Mobile app
                   </span>
                 )}
               </div>
-              <p className="text-gray-300 mb-4">{project.description}</p>
-              <div className="flex flex-wrap gap-2 mb-4">
+
+              <h3 className="text-2xl font-semibold text-slate-100">
+                {project.title}
+              </h3>
+              <p className="text-slate-300">{project.description}</p>
+              <div className="flex flex-wrap gap-2">
                 {project.tags.map((tag, tagIndex) => (
                   <span
                     key={tagIndex}
-                    className="bg-green-500/10 text-green-500 text-xs px-3 py-1 rounded-full"
+                    className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-cyan-100"
                   >
                     {tag}
                   </span>
                 ))}
               </div>
-              <div className="flex space-x-4">
+
+              <div className="flex flex-wrap gap-3">
                 {project.liveUrl && (
                   <a
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center text-gray-300 hover:text-green-500 transition-colors"
+                    className="inline-flex items-center gap-2 rounded-full border border-cyan-300/40 bg-cyan-500/10 px-4 py-2 text-sm font-semibold text-cyan-100 transition-colors duration-200 hover:border-cyan-200 hover:text-cyan-50"
                   >
-                    <ExternalLink className="h-4 w-4 mr-1" />
+                    <ExternalLink className="h-4 w-4" />
                     Live Demo
                   </a>
                 )}
@@ -211,9 +213,9 @@ export default function ProjectsSection() {
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center text-gray-300 hover:text-green-500 transition-colors"
+                    className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-slate-100 transition-colors duration-200 hover:border-purple-200/70 hover:text-purple-100"
                   >
-                    <Github className="h-4 w-4 mr-1" />
+                    <Github className="h-4 w-4" />
                     Code
                   </a>
                 )}

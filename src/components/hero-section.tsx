@@ -2,9 +2,27 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, Cpu, Rocket, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { typeText } from "@/lib/animations";
+
+const heroHighlights = [
+  {
+    title: "Currently",
+    description: "BSc (Hons) in IT @ University of Moratuwa.",
+    icon: Sparkles,
+  },
+  {
+    title: "Latest builds",
+    description: "DebateX, CeylonRides, CricBOT — shipped for real users.",
+    icon: Rocket,
+  },
+  {
+    title: "Toolbox",
+    description: "Next.js, React Native, Flutter, Firebase, .NET, IoT.",
+    icon: Cpu,
+  },
+];
 
 export default function HeroSection() {
   const typingRef = useRef<HTMLSpanElement>(null);
@@ -12,43 +30,61 @@ export default function HeroSection() {
   useEffect(() => {
     if (typingRef.current) {
       const phrases = [
-        "Web Developer",
-        "Mobile App Developer",
-        "Problem Solver",
-        "Creative Thinker",
+        "digital products",
+        "immersive web apps",
+        "mobile-first experiences",
+        "IoT-powered ideas",
       ];
-      typeText(typingRef.current, phrases);
+      typeText(typingRef.current, phrases, 90);
     }
   }, []);
 
   return (
     <section
       id="home"
-      className="min-h-screen flex flex-col justify-center pt-16 relative"
+      className="relative flex min-h-screen items-center overflow-hidden pt-28 pb-16"
     >
-      <div className="grid md:grid-cols-2 gap-8 items-center">
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[length:140px_140px] opacity-30" />
+        <div className="absolute -left-24 top-0 h-72 w-72 rounded-full bg-cyan-500/20 blur-3xl" />
+        <div className="absolute right-0 top-10 h-80 w-80 rounded-full bg-purple-500/20 blur-3xl" />
+      </div>
+
+      <div className="grid w-full items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
         <div
           className={cn(
-            "order-2 md:order-1 animate-fadeIn",
-            "flex flex-col space-y-6"
+            "order-2 flex flex-col space-y-8 lg:order-1",
+            "animate-fadeIn"
           )}
         >
-          <h1 className="text-4xl md:text-6xl font-bold">
-            Hi, I&apos;m <span className="text-green-500">Jalina Hirushan</span>
-          </h1>
-          <h2 className="text-2xl md:text-3xl text-gray-300">
-            I&apos;m a <span ref={typingRef} className="text-green-500"></span>
-          </h2>
-          <p className="text-gray-400 text-lg max-w-lg">
-            I’m an enthusiastic and dedicated IT undergraduate passionate about
-            building creative web and mobile applications. I enjoy learning new
-            technologies, solving real-world problems, and working
-            collaboratively to bring ideas to life.
-          </p>
-          <div className="flex flex-wrap gap-4 pt-4">
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-[0.3em] text-slate-300">
+            <span className="h-2 w-2 rounded-full bg-cyan-400 animate-ping" />
+            <span>Future-ready craft</span>
+          </div>
+
+          <div className="space-y-5">
+            <h1 className="text-4xl font-semibold leading-tight text-slate-100 md:text-6xl">
+              Jalina Hirushan
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500">
+                Designing luminous experiences for the web, mobile, and beyond.
+              </span>
+            </h1>
+            <p className="text-sm uppercase tracking-[0.22em] text-slate-400">
+              Building for{" "}
+              <span ref={typingRef} className="text-cyan-200"></span>
+            </p>
+            <p className="max-w-2xl text-lg leading-relaxed text-slate-300">
+              I&apos;m an enthusiastic IT undergraduate who blends product thinking
+              with playful, production-ready engineering. From IoT prototypes to
+              polished Next.js and React Native apps, I love shipping interfaces
+              that feel alive.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap gap-3">
             <a
               href="#contact"
-              className="bg-green-500 hover:bg-green-600 text-black font-medium py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105"
+              className="relative overflow-hidden rounded-full bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 px-6 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-500/40 transition-transform duration-200 hover:-translate-y-0.5"
               onClick={(e) => {
                 e.preventDefault();
                 document.querySelector("#contact")?.scrollIntoView({
@@ -56,11 +92,11 @@ export default function HeroSection() {
                 });
               }}
             >
-              Contact Me
+              Start a project
             </a>
             <a
               href="#projects"
-              className="border border-green-500 text-green-500 hover:bg-green-500/10 font-medium py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105"
+              className="rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-slate-100 transition-all duration-200 hover:border-cyan-300/60 hover:text-cyan-100 hover:-translate-y-0.5"
               onClick={(e) => {
                 e.preventDefault();
                 document.querySelector("#projects")?.scrollIntoView({
@@ -68,61 +104,92 @@ export default function HeroSection() {
                 });
               }}
             >
-              View Work
+              View portfolio
             </a>
             <a
               href="/cv.pdf"
               download="Jalina_Hirushan_CV.pdf"
-              className="border border-gray-400 text-gray-300 hover:bg-gray-400/10 hover:border-gray-300 font-medium py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105"
+              className="rounded-full border border-white/10 px-6 py-3 text-sm font-semibold text-slate-200 transition-all duration-200 hover:border-cyan-300/60 hover:text-cyan-100 hover:-translate-y-0.5"
             >
               Download CV
             </a>
           </div>
-        </div>
-        <div className="order-1 md:order-2 flex justify-center animate-fadeIn">
-          <div className="relative">
-            {/* Animated background elements */}
-            <div className="absolute -inset-4 bg-gradient-to-r from-green-500/20 to-green-300/20 rounded-lg blur-xl opacity-70 animate-pulse"></div>
 
-            {/* Geometric shapes */}
-            <div className="absolute -bottom-6 -right-6 w-24 h-24 border-2 border-green-500/30 rounded-lg transform rotate-12"></div>
-            <div className="absolute -top-6 -left-6 w-20 h-20 border-2 border-green-500/30 rounded-lg transform -rotate-12"></div>
-
-            {/* Dot pattern */}
-            <div className="absolute -z-10 inset-0 transform translate-x-8 translate-y-8">
-              <div className="absolute inset-0 grid grid-cols-6 gap-2">
-                {Array(24)
-                  .fill(0)
-                  .map((_, i) => (
-                    <div
-                      key={i}
-                      className="w-1.5 h-1.5 rounded-full bg-green-500/30"
-                    ></div>
-                  ))}
-              </div>
-            </div>
-
-            {/* Circular image container */}
-            <div className="relative w-72 h-72 md:w-96 md:h-96 overflow-hidden z-10">
-              <div className="absolute inset-0 bg-gradient-to-br from-green-500 to-green-700 opacity-80 rounded-full animate-slow-spin"></div>
-              <div className="absolute inset-1 bg-black rounded-full z-10"></div>
-              <div className="absolute inset-2 overflow-hidden rounded-full z-20">
-                <div className="relative w-full h-full flex items-center justify-center">
-                  <Image
-                    src={"/image.png"}
-                    alt="Jalina Hirushan"
-                    className="object-contain max-w-[100%] max-h-[100%] scale-150"
-                    width={500}
-                    height={500}
-                    priority
-                  />
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {heroHighlights.map(({ title, description, icon: Icon }, index) => (
+              <div
+                key={title}
+                className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-cyan-300/40 hover:shadow-[0_20px_70px_-50px_rgba(34,211,238,0.85)]"
+                style={{ transitionDelay: `${index * 60}ms` }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-transparent to-purple-500/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <div className="relative mb-3 flex items-center gap-2 text-sm font-semibold text-slate-100">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-cyan-500/10 text-cyan-300 ring-1 ring-cyan-300/20">
+                    <Icon size={18} />
+                  </span>
+                  {title}
                 </div>
+                <p className="relative text-sm leading-relaxed text-slate-300">
+                  {description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="relative order-1 animate-fadeIn lg:order-2">
+          <div className="absolute -inset-10 -z-10 bg-gradient-to-tr from-cyan-500/20 via-blue-500/10 to-purple-500/20 blur-3xl" />
+          <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-white/5 p-5 shadow-[0_30px_120px_-60px_rgba(34,211,238,0.65)] backdrop-blur-2xl">
+            <div className="absolute inset-x-6 top-6 h-32 rounded-full bg-gradient-to-r from-cyan-400/15 via-blue-400/10 to-purple-500/15 blur-3xl" />
+            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-slate-900/70 p-3">
+              <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[length:90px_90px] opacity-30" />
+              <div className="relative aspect-[4/5] overflow-hidden rounded-xl border border-white/5">
+                <Image
+                  src={"/image.png"}
+                  alt="Jalina Hirushan"
+                  className="h-full w-full object-cover"
+                  width={720}
+                  height={900}
+                  priority
+                />
+              </div>
+              <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                {[
+                  {
+                    label: "Shipped",
+                    value: "Group + solo products (web/mobile/IoT)",
+                  },
+                  {
+                    label: "Stacks",
+                    value: "Next.js · React Native · Flutter · Firebase",
+                  },
+                  {
+                    label: "Mindset",
+                    value: "Human-first UX, reliable systems, bold polish.",
+                  },
+                ].map((item) => (
+                  <div
+                    key={item.label}
+                    className="rounded-xl border border-white/5 bg-white/5 p-3"
+                  >
+                    <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
+                      {item.label}
+                    </p>
+                    <p className="mt-1 text-sm font-medium text-slate-100">
+                      {item.value}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              <div className="absolute right-4 top-4 rounded-full border border-white/10 bg-black/40 px-3 py-1 text-xs text-cyan-100">
+                Crafting the v2 aesthetic
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce">
         <a
           href="#education"
           onClick={(e) => {
@@ -131,8 +198,9 @@ export default function HeroSection() {
               behavior: "smooth",
             });
           }}
+          className="flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/5 text-cyan-200 backdrop-blur-md transition-colors hover:border-cyan-300/60"
         >
-          <ArrowDown className="text-green-500 h-8 w-8" />
+          <ArrowDown className="h-6 w-6" />
         </a>
       </div>
     </section>

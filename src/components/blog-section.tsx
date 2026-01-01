@@ -83,58 +83,59 @@ export default function BlogSection() {
     <section
       id="blogs"
       ref={sectionRef}
-      className="py-20 min-h-screen flex flex-col justify-center"
+      className="flex min-h-screen flex-col justify-center py-24"
     >
       <SectionHeading title="Blog" />
 
       {isLoading ? (
         <div className="flex justify-center items-center h-64">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-green-500"></div>
+          <div className="h-12 w-12 animate-spin rounded-full border-b-2 border-t-2 border-cyan-400"></div>
         </div>
       ) : (
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid gap-8 md:grid-cols-2">
           {blogs.map((blog, index) => (
             <a
               key={index}
               href={blog.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`block group`}
+              className="block"
             >
               <div
-                className={`bg-gray-900/50 rounded-xl overflow-hidden border border-gray-800 hover:border-green-500/50 transition-all duration-500 transform hover:-translate-y-2 ${
+                className={`group relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-slate-900/70 via-slate-900/50 to-slate-950 p-4 shadow-[0_30px_120px_-60px_rgba(34,211,238,0.75)] transition-all duration-700 hover:-translate-y-2 hover:border-cyan-300/50 ${
                   isInView
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-20"
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-10 opacity-0"
                 }`}
-                style={{ transitionDelay: `${index * 200}ms` }}
+                style={{ transitionDelay: `${index * 140}ms` }}
               >
-                <div className="relative overflow-hidden">
-                  {/* CSS-based MacBook Frame for blog posts */}
+                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(34,211,238,0.08),transparent_40%),radial-gradient(circle_at_100%_100%,rgba(168,85,247,0.08),transparent_35%)] opacity-70" />
+
+                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-3">
                   <MacBookFrame imageUrl={blog.imageUrl} />
                 </div>
 
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2 text-green-500 group-hover:text-green-400 transition-colors">
+                <div className="relative p-4">
+                  <h3 className="text-xl font-semibold text-slate-100 transition-colors duration-200 group-hover:text-cyan-100">
                     {blog.title}
                   </h3>
-                  <p className="text-gray-300 mb-4 line-clamp-3">
+                  <p className="mb-4 line-clamp-3 text-slate-300">
                     {blog.description}
                   </p>
                   <div className="flex flex-wrap gap-2 mb-4">
                     {blog.tags.map((tag, tagIndex) => (
                       <span
                         key={tagIndex}
-                        className="bg-green-500/10 text-green-500 text-xs px-3 py-1 rounded-full"
+                        className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-cyan-100"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-sm text-gray-400">{blog.date}</span>
-                    <span className="flex items-center text-gray-300 group-hover:text-green-500 transition-colors">
-                      Read More <ExternalLink className="h-4 w-4 ml-1" />
+                    <span className="text-sm text-slate-400">{blog.date}</span>
+                    <span className="flex items-center gap-2 text-sm font-semibold text-slate-200 transition-colors duration-200 group-hover:text-cyan-100">
+                      Read more <ExternalLink className="h-4 w-4" />
                     </span>
                   </div>
                 </div>

@@ -46,34 +46,43 @@ export default function EducationSection() {
     <section
       id="education"
       ref={sectionRef}
-      className="py-20 min-h-screen flex flex-col justify-center"
+      className="flex min-h-screen flex-col justify-center py-24"
     >
       <SectionHeading title="Education" />
-      <div className="space-y-12">
-        {educationData.map((item, index) => (
-          <div
-            key={index}
-            className={`relative pl-8 border-l-2 border-green-500/50 transition-all duration-700 transform ${
-              isInView
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 -translate-x-10"
-            }`}
-            style={{ transitionDelay: `${index * 200}ms` }}
-          >
-            <div className="absolute -left-3 top-0 w-6 h-6 bg-black border-2 border-green-500 rounded-full flex items-center justify-center">
-              <GraduationCap className="h-3 w-3 text-green-500" />
+      <div className="relative">
+        <div className="absolute left-3 top-0 h-full w-px bg-gradient-to-b from-cyan-400/60 via-blue-400/30 to-purple-500/40" />
+        <div className="space-y-6">
+          {educationData.map((item, index) => (
+            <div
+              key={item.degree}
+              className={`relative pl-10 transition-all duration-700 ${
+                isInView
+                  ? "translate-x-0 opacity-100"
+                  : "-translate-x-10 opacity-0"
+              }`}
+              style={{ transitionDelay: `${index * 140}ms` }}
+            >
+              <div className="absolute left-0 top-3 flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-slate-900 text-cyan-200 shadow-[0_10px_50px_-30px_rgba(34,211,238,0.8)]">
+                <GraduationCap className="h-4 w-4" />
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-5 shadow-[0_20px_60px_-40px_rgba(34,211,238,0.75)] backdrop-blur-sm">
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                  <div>
+                    <h3 className="text-xl font-semibold text-slate-100">
+                      {item.degree}
+                    </h3>
+                    <p className="text-sm text-cyan-200">{item.institution}</p>
+                  </div>
+                  <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-200">
+                    <Calendar className="h-4 w-4 text-cyan-300" />
+                    {item.duration}
+                  </span>
+                </div>
+                <p className="mt-3 text-slate-300">{item.description}</p>
+              </div>
             </div>
-            <div className="mb-1 flex items-center">
-              <h3 className="text-xl font-bold text-white">{item.degree}</h3>
-            </div>
-            <div className="mb-2 text-green-500">{item.institution}</div>
-            <div className="mb-4 flex items-center text-gray-400">
-              <Calendar className="h-4 w-4 mr-2" />
-              {item.duration}
-            </div>
-            <p className="text-gray-300">{item.description}</p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );

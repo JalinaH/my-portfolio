@@ -3,26 +3,26 @@
 @tailwind utilities;
 
 :root {
-  --background: 0 0% 0%;
-  --foreground: 0 0% 100%;
-  --card: 0 0% 3%;
-  --card-foreground: 0 0% 100%;
-  --popover: 0 0% 3%;
-  --popover-foreground: 0 0% 100%;
-  --primary: 142.1 70.6% 45.3%;
-  --primary-foreground: 0 0% 0%;
-  --secondary: 240 3.7% 15.9%;
-  --secondary-foreground: 0 0% 98%;
-  --muted: 0 0% 15%;
-  --muted-foreground: 240 5% 64.9%;
-  --accent: 12 6.5% 15.1%;
-  --accent-foreground: 0 0% 98%;
+  --background: 225 65% 4%;
+  --foreground: 210 40% 96%;
+  --card: 222 47% 7%;
+  --card-foreground: 210 40% 96%;
+  --popover: 222 47% 7%;
+  --popover-foreground: 210 40% 96%;
+  --primary: 186 100% 60%;
+  --primary-foreground: 215 40% 10%;
+  --secondary: 248 34% 14%;
+  --secondary-foreground: 210 40% 96%;
+  --muted: 220 28% 12%;
+  --muted-foreground: 215 20% 65%;
+  --accent: 274 88% 64%;
+  --accent-foreground: 210 40% 98%;
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 0 0% 98%;
-  --border: 240 3.7% 15.9%;
-  --input: 240 3.7% 15.9%;
-  --ring: 142.4 71.8% 29.2%;
-  --radius: 0.5rem;
+  --border: 215 28% 18%;
+  --input: 215 28% 18%;
+  --ring: 186 100% 70%;
+  --radius: 0.75rem;
 }
 
 /* Mobile responsiveness fixes */
@@ -35,8 +35,23 @@ body {
 }
 
 body {
-  background-color: black;
-  color: white;
+  background-color: #030712;
+  color: #e5e7eb;
+  background-image: radial-gradient(
+      circle at 10% 20%,
+      rgba(56, 189, 248, 0.08),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 80% 10%,
+      rgba(168, 85, 247, 0.08),
+      transparent 20%
+    ),
+    radial-gradient(
+      circle at 50% 80%,
+      rgba(248, 113, 113, 0.04),
+      transparent 25%
+    );
 }
 
 /* Custom scrollbar */
@@ -45,22 +60,22 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #111;
+  background: #0b1020;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #10b981;
+  background: #22d3ee;
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #0e9f6e;
+  background: #06b6d4;
 }
 
 /* Selection color */
 ::selection {
-  background-color: rgba(16, 185, 129, 0.2);
-  color: #10b981;
+  background-color: rgba(34, 211, 238, 0.2);
+  color: #22d3ee;
 }
 
 /* MacBook Frame Styles */
@@ -150,7 +165,7 @@ body {
   transform: translateX(-50%);
 }
 
-/* Green glow effect on hover */
+/* Neon glow effect on hover */
 .macbook-frame.hovered::after {
   content: "";
   position: absolute;
@@ -159,7 +174,7 @@ body {
   right: 0;
   bottom: 0;
   border-radius: 12px;
-  box-shadow: 0 0 25px 5px rgba(74, 222, 128, 0.3);
+  box-shadow: 0 0 25px 5px rgba(56, 189, 248, 0.3);
   opacity: 0;
   animation: macbook-glow 1.5s ease-in-out infinite alternate;
   pointer-events: none;
@@ -184,7 +199,7 @@ body {
   right: 0;
   bottom: 0;
   border-radius: 14px;
-  box-shadow: 0 0 25px 5px rgba(74, 222, 128, 0.2);
+  box-shadow: 0 0 25px 5px rgba(56, 189, 248, 0.2);
   opacity: 0;
   animation: glow 1.5s ease-in-out infinite alternate;
   pointer-events: none;
@@ -300,7 +315,7 @@ body {
   right: 0;
   bottom: 0;
   border-radius: 14px;
-  box-shadow: 0 0 25px 5px rgba(74, 222, 128, 0.2);
+  box-shadow: 0 0 25px 5px rgba(56, 189, 248, 0.2);
   opacity: 0;
   animation: glow 1.5s ease-in-out infinite alternate;
   pointer-events: none;
@@ -376,7 +391,7 @@ body {
   z-index: 2;
 }
 
-/* Green glow effect on hover */
+/* Neon glow effect on hover */
 .mobile-frame.hovered::after {
   content: "";
   position: absolute;
@@ -385,7 +400,7 @@ body {
   right: 0;
   bottom: 0;
   border-radius: 40px;
-  box-shadow: 0 0 25px 5px rgba(74, 222, 128, 0.3);
+  box-shadow: 0 0 25px 5px rgba(56, 189, 248, 0.3);
   opacity: 0;
   animation: mobile-glow 1.5s ease-in-out infinite alternate;
   pointer-events: none;
@@ -434,7 +449,7 @@ body {
   border-radius: 12px;
   background: rgba(26, 26, 26, 0.7);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(74, 222, 128, 0.3);
+  border: 1px solid rgba(56, 189, 248, 0.35);
   backdrop-filter: blur(8px);
 }
 
@@ -445,7 +460,7 @@ body {
 
 .skill-icon-back {
   transform: rotateY(180deg) translateZ(30px);
-  background: rgba(74, 222, 128, 0.2);
+  background: rgba(56, 189, 248, 0.2);
 }
 
 .skill-icon-right {
@@ -489,7 +504,7 @@ body {
   right: -10px;
   bottom: -10px;
   border-radius: 18px;
-  box-shadow: 0 0 15px rgba(74, 222, 128, 0.4);
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
   opacity: 0;
   animation: skill-glow 1.5s ease-in-out infinite alternate;
   pointer-events: none;
