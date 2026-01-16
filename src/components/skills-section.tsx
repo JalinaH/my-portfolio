@@ -63,7 +63,7 @@ export default function SkillsSection() {
           ([category, skills], categoryIndex) => (
             <div
               key={category}
-              className={`rounded-2xl border border-white/10 bg-white/5 p-6 shadow-[0_20px_70px_-50px_rgba(34,211,238,0.75)] transition-all duration-700 ${
+              className={`rounded-2xl border border-emerald-400/15 bg-black/60 p-6 shadow-[0_20px_70px_-50px_rgba(16,185,129,0.55)] transition-all duration-700 ${
                 isInView
                   ? "translate-y-0 opacity-100"
                   : "translate-y-10 opacity-0"
@@ -72,7 +72,7 @@ export default function SkillsSection() {
             >
               <div className="flex items-center justify-between gap-3">
                 <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-cyan-400 shadow-[0_0_0_6px_rgba(34,211,238,0.15)]" />
+                  <span className="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_0_6px_rgba(16,185,129,0.2)]" />
                   <h3 className="text-lg font-semibold text-slate-100">
                     {category}
                   </h3>
@@ -82,7 +82,7 @@ export default function SkillsSection() {
                 </span>
               </div>
 
-              <div className="mt-4 flex flex-wrap gap-4">
+              <div className="mt-4 flex flex-wrap gap-6">
                 {skills.map((skill, skillIndex) => (
                   <div
                     key={skill.name}

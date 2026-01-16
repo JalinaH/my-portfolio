@@ -166,7 +166,7 @@ export default function ProjectMacBook({
 
   if (!isMounted) {
     return (
-      <div className="h-[280px] w-full bg-gray-800 flex items-center justify-center">
+      <div className="h-[280px] w-full bg-black/70 text-slate-200 flex items-center justify-center">
         Loading...
       </div>
     );

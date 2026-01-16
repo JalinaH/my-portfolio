@@ -95,7 +95,7 @@ export default function Chatbot() {
       {/* Chatbot Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 rounded-full border border-white/15 bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 p-4 text-slate-950 shadow-2xl shadow-cyan-500/30 transition-all duration-300 hover:scale-105"
+        className="fixed bottom-6 right-6 z-50 rounded-full border border-emerald-300/60 bg-emerald-300 p-4 text-black shadow-2xl shadow-emerald-500/30 transition-all duration-300 hover:scale-105"
         aria-label="Toggle chatbot"
       >
         {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
@@ -103,15 +103,15 @@ export default function Chatbot() {
 
       {/* Chatbot Window */}
       {isOpen && (
-        <div className="fixed bottom-20 right-6 z-40 flex h-96 w-80 flex-col rounded-2xl border border-white/10 bg-slate-950/90 shadow-[0_30px_120px_-60px_rgba(34,211,238,0.65)] backdrop-blur-xl">
+        <div className="fixed bottom-20 right-6 z-40 flex h-96 w-80 flex-col rounded-2xl border border-emerald-400/20 bg-black/90 shadow-[0_30px_120px_-70px_rgba(16,185,129,0.6)] backdrop-blur-xl">
           {/* Header */}
-          <div className="rounded-t-2xl border-b border-white/10 bg-gradient-to-r from-cyan-500/15 to-purple-500/10 p-4 text-slate-100">
-            <h3 className="font-semibold text-cyan-200">Chat with Pixel</h3>
+          <div className="rounded-t-2xl border-b border-emerald-400/20 bg-emerald-500/10 p-4 text-slate-100">
+            <h3 className="font-semibold text-emerald-200">Chat with Pixel</h3>
             <p className="text-sm text-slate-300">Ask me about Jalina.</p>
           </div>
 
           {/* Messages Container */}
-          <div className="flex-1 space-y-3 overflow-y-auto p-4 scrollbar-thin scrollbar-track-slate-900 scrollbar-thumb-cyan-500/50">
+          <div className="flex-1 space-y-3 overflow-y-auto p-4 scrollbar-thin scrollbar-track-black scrollbar-thumb-emerald-500/40">
             {messages.map((message) => (
               <div
                 key={message.id}
@@ -122,7 +122,7 @@ export default function Chatbot() {
                 <div
                   className={`max-w-xs p-3 rounded-lg backdrop-blur-sm ${
                     message.isUser
-                      ? "bg-gradient-to-r from-cyan-400 to-blue-500 font-semibold text-slate-950 shadow-lg shadow-cyan-500/30"
+                      ? "bg-emerald-300 font-semibold text-black shadow-lg shadow-emerald-500/30"
                       : "border border-white/10 bg-white/5 text-slate-100"
                   }`}
                 >
@@ -133,7 +133,7 @@ export default function Chatbot() {
             {isLoading && (
               <div className="flex justify-start">
                 <div className="rounded-lg border border-white/10 bg-white/5 p-3 text-slate-100 backdrop-blur-sm">
-                  <Loader2 className="h-4 w-4 animate-spin text-cyan-300" />
+                  <Loader2 className="h-4 w-4 animate-spin text-emerald-300" />
                 </div>
               </div>
             )}
@@ -150,13 +150,13 @@ export default function Chatbot() {
                 onChange={(e) => setInputMessage(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Ask me anything about Jalina..."
-                className="flex-1 rounded-lg border border-white/10 bg-slate-900/80 px-3 py-2 text-sm text-slate-100 placeholder-slate-500 outline-none transition focus:border-cyan-300/50 focus:ring-2 focus:ring-cyan-400/40"
+                className="flex-1 rounded-lg border border-white/10 bg-black/80 px-3 py-2 text-sm text-slate-100 placeholder-slate-500 outline-none transition focus:border-emerald-300/50 focus:ring-2 focus:ring-emerald-400/30"
                 disabled={isLoading}
               />
               <button
                 onClick={sendMessage}
                 disabled={isLoading || !inputMessage.trim()}
-                className="rounded-lg bg-gradient-to-r from-cyan-400 to-blue-500 p-2 text-slate-950 transition-all duration-200 hover:shadow-lg hover:shadow-cyan-500/30 disabled:cursor-not-allowed disabled:bg-slate-700 disabled:text-slate-400"
+                className="rounded-lg bg-emerald-300 p-2 text-black transition-all duration-200 hover:shadow-lg hover:shadow-emerald-500/30 disabled:cursor-not-allowed disabled:bg-slate-700 disabled:text-slate-400"
               >
                 <Send size={16} />
               </button>

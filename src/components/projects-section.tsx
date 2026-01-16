@@ -1,11 +1,10 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { ExternalLink, Github } from "lucide-react";
 import { useInView } from "@/lib/animations";
 import SectionHeading from "./section-heading";
-import MacBookFrame from "./MacBookFrame";
-import MobileFrame from "./MobileFrame";
 
 interface Project {
   title: string;
@@ -138,87 +137,101 @@ export default function ProjectsSection() {
     >
       <SectionHeading title="Projects" />
 
-      <div className="grid gap-8 md:grid-cols-2">
+      <div className="space-y-6">
         {projectsData.map((project, index) => (
           <div
             key={index}
-            className={`group relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-slate-900/70 via-slate-900/50 to-slate-950 p-5 shadow-[0_30px_120px_-60px_rgba(34,211,238,0.75)] transition-all duration-700 hover:-translate-y-2 hover:border-cyan-300/50 ${
+            className={`group relative overflow-hidden rounded-3xl border border-emerald-400/20 bg-black/70 shadow-[0_30px_120px_-80px_rgba(16,185,129,0.5)] transition-all duration-700 hover:border-emerald-300/60 hover:shadow-[0_40px_140px_-80px_rgba(16,185,129,0.7)] ${
               isInView
                 ? "translate-y-0 opacity-100"
                 : "translate-y-10 opacity-0"
             }`}
             style={{ transitionDelay: `${index * 140}ms` }}
           >
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(34,211,238,0.08),transparent_40%),radial-gradient(circle_at_100%_100%,rgba(168,85,247,0.08),transparent_35%)] opacity-70" />
-            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-3">
-              {project.isMobile ? (
-                <MobileFrame imageUrl={project.image || "/placeholder.svg"} />
-              ) : (
-                <MacBookFrame imageUrl={project.image || "/placeholder.svg"} />
-              )}
-            </div>
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_10%_15%,rgba(16,185,129,0.16),transparent_45%),radial-gradient(circle_at_80%_80%,rgba(34,211,238,0.12),transparent_40%)] opacity-70" />
+            <div className="pointer-events-none absolute inset-0 space-scanlines opacity-0 transition-opacity duration-700 group-hover:opacity-30" />
 
-            <div className="relative mt-4 space-y-4">
-              <div className="flex flex-wrap items-center gap-2">
-                <span
-                  className={`rounded-full border px-3 py-1 text-xs font-semibold ${
-                    project.projectType === "Group"
-                      ? "border-blue-300/40 bg-blue-500/10 text-blue-100"
-                      : "border-purple-300/40 bg-purple-500/10 text-purple-100"
-                  }`}
-                >
-                  {project.projectType} project
-                </span>
-                {project.projectType === "Group" && project.role && (
-                  <span className="rounded-full border border-cyan-300/30 bg-cyan-500/10 px-3 py-1 text-xs font-semibold text-cyan-100">
-                    {project.role}
-                  </span>
-                )}
-                {project.isMobile && (
-                  <span className="rounded-full border border-emerald-300/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-100">
-                    Mobile app
-                  </span>
-                )}
+            <div className="relative flex flex-col gap-6 p-6 md:flex-row md:items-center">
+              <div
+                className={`relative w-full overflow-hidden rounded-2xl border border-white/10 bg-black/60 ${
+                  project.isMobile ? "aspect-[3/5]" : "aspect-[4/3]"
+                } md:w-[42%]`}
+              >
+                <Image
+                  src={project.image || "/placeholder.svg"}
+                  alt={`${project.title} preview`}
+                  fill
+                  className="object-cover opacity-90 transition-opacity duration-500 group-hover:opacity-100"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  priority={index < 2}
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent" />
+                <div className="pointer-events-none absolute inset-0 space-twinkle opacity-35" />
               </div>
 
-              <h3 className="text-2xl font-semibold text-slate-100">
-                {project.title}
-              </h3>
-              <p className="text-slate-300">{project.description}</p>
-              <div className="flex flex-wrap gap-2">
-                {project.tags.map((tag, tagIndex) => (
-                  <span
-                    key={tagIndex}
-                    className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-cyan-100"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
+              <div className="flex-1 space-y-4">
+                <div className="flex items-center gap-3 text-[10px] uppercase tracking-[0.35em] text-emerald-200/80">
+                  <span className="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_12px_rgba(16,185,129,0.7)]" />
+                  <span>Mission File</span>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-semibold text-slate-100">
+                    {project.title}
+                  </h3>
+                  <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-slate-400">
+                    <span className="rounded-full border border-emerald-400/40 bg-emerald-500/10 px-3 py-1 text-[10px] text-emerald-100">
+                      {project.projectType}
+                    </span>
+                    {project.projectType === "Group" && project.role && (
+                      <span className="rounded-full border border-emerald-300/30 bg-emerald-500/10 px-3 py-1 text-[10px] font-semibold text-emerald-100">
+                        {project.role}
+                      </span>
+                    )}
+                    {project.isMobile && (
+                      <span className="rounded-full border border-emerald-300/30 bg-emerald-500/10 px-3 py-1 text-[10px] font-semibold text-emerald-100">
+                        Mobile app
+                      </span>
+                    )}
+                  </div>
+                </div>
 
-              <div className="flex flex-wrap gap-3">
-                {project.liveUrl && (
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-cyan-300/40 bg-cyan-500/10 px-4 py-2 text-sm font-semibold text-cyan-100 transition-colors duration-200 hover:border-cyan-200 hover:text-cyan-50"
-                  >
-                    <ExternalLink className="h-4 w-4" />
-                    Live Demo
-                  </a>
-                )}
-                {project.githubUrl && (
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-slate-100 transition-colors duration-200 hover:border-purple-200/70 hover:text-purple-100"
-                  >
-                    <Github className="h-4 w-4" />
-                    Code
-                  </a>
-                )}
+                <p className="text-slate-300">{project.description}</p>
+
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((tag, tagIndex) => (
+                    <span
+                      key={tagIndex}
+                      className="rounded-full space-chip px-3 py-1 text-xs"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex flex-wrap gap-3">
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full border border-emerald-300/50 bg-emerald-500/10 px-4 py-2 text-sm font-semibold text-emerald-100 transition-colors duration-200 hover:border-emerald-200 hover:text-emerald-50"
+                    >
+                      <ExternalLink className="h-4 w-4" />
+                      Live Demo
+                    </a>
+                  )}
+                  {project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-slate-100 transition-colors duration-200 hover:border-emerald-200/70 hover:text-emerald-100"
+                    >
+                      <Github className="h-4 w-4" />
+                      Code
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
           </div>

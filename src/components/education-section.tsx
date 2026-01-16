@@ -50,7 +50,7 @@ export default function EducationSection() {
     >
       <SectionHeading title="Education" />
       <div className="relative">
-        <div className="absolute left-3 top-0 h-full w-px bg-gradient-to-b from-cyan-400/60 via-blue-400/30 to-purple-500/40" />
+        <div className="absolute left-3 top-0 h-full w-px bg-gradient-to-b from-emerald-400/70 via-cyan-400/30 to-slate-500/40" />
         <div className="space-y-6">
           {educationData.map((item, index) => (
             <div
@@ -62,19 +62,21 @@ export default function EducationSection() {
               }`}
               style={{ transitionDelay: `${index * 140}ms` }}
             >
-              <div className="absolute left-0 top-3 flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-slate-900 text-cyan-200 shadow-[0_10px_50px_-30px_rgba(34,211,238,0.8)]">
+              <div className="absolute left-0 top-3 flex h-9 w-9 items-center justify-center rounded-full border border-emerald-400/30 bg-black text-emerald-200 shadow-[0_10px_50px_-30px_rgba(16,185,129,0.6)]">
                 <GraduationCap className="h-4 w-4" />
               </div>
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-5 shadow-[0_20px_60px_-40px_rgba(34,211,238,0.75)] backdrop-blur-sm">
+              <div className="rounded-2xl border border-white/10 bg-black/60 p-5 shadow-[0_20px_60px_-40px_rgba(16,185,129,0.55)] backdrop-blur-sm">
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                   <div>
                     <h3 className="text-xl font-semibold text-slate-100">
                       {item.degree}
                     </h3>
-                    <p className="text-sm text-cyan-200">{item.institution}</p>
+                    <p className="text-sm text-emerald-200">
+                      {item.institution}
+                    </p>
                   </div>
                   <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-200">
-                    <Calendar className="h-4 w-4 text-cyan-300" />
+                    <Calendar className="h-4 w-4 text-emerald-300" />
                     {item.duration}
                   </span>
                 </div>

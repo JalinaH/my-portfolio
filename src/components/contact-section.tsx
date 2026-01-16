@@ -84,11 +84,11 @@ export default function ContactSection() {
             isInView ? "translate-x-0 opacity-100" : "-translate-x-10 opacity-0"
           }`}
         >
-          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-slate-900/70 via-slate-900/50 to-slate-950 p-8 shadow-[0_30px_120px_-60px_rgba(34,211,238,0.7)]">
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_10%_20%,rgba(34,211,238,0.08),transparent_35%),radial-gradient(circle_at_90%_10%,rgba(168,85,247,0.08),transparent_35%)]" />
+          <div className="relative overflow-hidden rounded-3xl border border-emerald-400/15 bg-black/70 p-8 shadow-[0_30px_120px_-70px_rgba(16,185,129,0.6)]">
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_10%_20%,rgba(16,185,129,0.12),transparent_35%),radial-gradient(circle_at_90%_10%,rgba(34,211,238,0.08),transparent_35%)]" />
             <div className="relative space-y-6">
-              <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-[0.25em] text-slate-300">
-                <span className="h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
+              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-[11px] uppercase tracking-[0.25em] text-emerald-100">
+                <span className="h-2 w-2 rounded-full bg-emerald-300 animate-ping" />
                 <span>Let&apos;s collaborate</span>
               </div>
               <h3 className="text-3xl font-semibold text-slate-100">
@@ -105,7 +105,7 @@ export default function ContactSection() {
                 {["Web", "Mobile", "IoT prototypes", "UI polish"].map((pill) => (
                   <span
                     key={pill}
-                    className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold text-cyan-100"
+                    className="rounded-full border border-emerald-300/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-100"
                   >
                     {pill}
                   </span>
@@ -113,8 +113,8 @@ export default function ContactSection() {
               </div>
 
               <div className="space-y-4">
-                <div className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-4">
-                  <div className="rounded-full bg-cyan-500/10 p-3 text-cyan-200">
+                <div className="flex items-start gap-3 rounded-2xl border border-white/10 bg-black/60 p-4">
+                  <div className="rounded-full bg-emerald-500/10 p-3 text-emerald-200">
                     <Mail className="h-5 w-5" />
                   </div>
                   <div>
@@ -132,7 +132,7 @@ export default function ContactSection() {
                     href="https://github.com/JalinaH"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex flex-1 items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/5 p-3 text-slate-100 transition-all duration-200 hover:border-cyan-300/50 hover:text-cyan-100"
+                    className="flex flex-1 items-center justify-center gap-2 rounded-2xl border border-white/10 bg-black/60 p-3 text-slate-100 transition-all duration-200 hover:border-emerald-300/50 hover:text-emerald-100"
                   >
                     <Github className="h-5 w-5" />
                     GitHub
@@ -141,7 +141,7 @@ export default function ContactSection() {
                     href="https://linkedin.com/in/jalinahirushan"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex flex-1 items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/5 p-3 text-slate-100 transition-all duration-200 hover:border-cyan-300/50 hover:text-cyan-100"
+                    className="flex flex-1 items-center justify-center gap-2 rounded-2xl border border-white/10 bg-black/60 p-3 text-slate-100 transition-all duration-200 hover:border-emerald-300/50 hover:text-emerald-100"
                   >
                     <Linkedin className="h-5 w-5" />
                     LinkedIn
@@ -158,8 +158,8 @@ export default function ContactSection() {
             isInView ? "translate-x-0 opacity-100" : "translate-x-10 opacity-0"
           }`}
         >
-          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 shadow-[0_30px_120px_-60px_rgba(34,211,238,0.75)] backdrop-blur-lg">
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(34,211,238,0.08),transparent_40%),radial-gradient(circle_at_100%_0%,rgba(168,85,247,0.08),transparent_35%)]" />
+          <div className="relative overflow-hidden rounded-3xl border border-emerald-400/15 bg-black/70 p-6 shadow-[0_30px_120px_-70px_rgba(16,185,129,0.6)] backdrop-blur-lg">
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(16,185,129,0.12),transparent_40%),radial-gradient(circle_at_100%_0%,rgba(34,211,238,0.08),transparent_35%)]" />
             <div className="relative space-y-6">
               <div className="grid gap-6 md:grid-cols-2">
                 <div>
@@ -173,7 +173,7 @@ export default function ContactSection() {
                     value={formState.name}
                     onChange={handleChange}
                     required
-                    className="w-full rounded-xl border border-white/10 bg-slate-900/60 px-4 py-3 text-slate-100 outline-none transition-all focus:border-cyan-300/60 focus:ring-2 focus:ring-cyan-400/40"
+                    className="w-full rounded-xl border border-white/10 bg-black/60 px-4 py-3 text-slate-100 outline-none transition-all focus:border-emerald-300/60 focus:ring-2 focus:ring-emerald-400/30"
                   />
                 </div>
                 <div>
@@ -187,7 +187,7 @@ export default function ContactSection() {
                     value={formState.email}
                     onChange={handleChange}
                     required
-                    className="w-full rounded-xl border border-white/10 bg-slate-900/60 px-4 py-3 text-slate-100 outline-none transition-all focus:border-cyan-300/60 focus:ring-2 focus:ring-cyan-400/40"
+                    className="w-full rounded-xl border border-white/10 bg-black/60 px-4 py-3 text-slate-100 outline-none transition-all focus:border-emerald-300/60 focus:ring-2 focus:ring-emerald-400/30"
                   />
                 </div>
               </div>
@@ -202,7 +202,7 @@ export default function ContactSection() {
                   value={formState.subject}
                   onChange={handleChange}
                   required
-                  className="w-full rounded-xl border border-white/10 bg-slate-900/60 px-4 py-3 text-slate-100 outline-none transition-all focus:border-cyan-300/60 focus:ring-2 focus:ring-cyan-400/40"
+                  className="w-full rounded-xl border border-white/10 bg-black/60 px-4 py-3 text-slate-100 outline-none transition-all focus:border-emerald-300/60 focus:ring-2 focus:ring-emerald-400/30"
                 />
               </div>
               <div>
@@ -216,12 +216,12 @@ export default function ContactSection() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full resize-none rounded-xl border border-white/10 bg-slate-900/60 px-4 py-3 text-slate-100 outline-none transition-all focus:border-cyan-300/60 focus:ring-2 focus:ring-cyan-400/40"
+                  className="w-full resize-none rounded-xl border border-white/10 bg-black/60 px-4 py-3 text-slate-100 outline-none transition-all focus:border-emerald-300/60 focus:ring-2 focus:ring-emerald-400/30"
                 ></textarea>
               </div>
               <button
                 type="submit"
-                className="flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 px-6 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-500/30 transition-transform duration-200 hover:-translate-y-0.5"
+                className="flex items-center gap-2 rounded-full border border-emerald-300/70 bg-emerald-300 px-6 py-3 text-sm font-semibold text-black shadow-[0_10px_40px_-18px_rgba(16,185,129,0.7)] transition-transform duration-200 hover:-translate-y-0.5"
               >
                 Send Message
                 <Send className="h-4 w-4" />

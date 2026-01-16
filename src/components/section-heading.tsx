@@ -17,15 +17,15 @@ export default function SectionHeading({
       )}
     >
       <div>
-        <p className="text-[11px] uppercase tracking-[0.3em] text-slate-400">
-          / {title}
+        <p className="text-[10px] uppercase tracking-[0.35em] text-emerald-300/80">
+          Logbook
         </p>
-        <h2 className="text-3xl md:text-4xl font-semibold text-slate-100">
+        <h2 className="text-3xl font-semibold text-slate-100 md:text-4xl">
           {title}
         </h2>
-        <div className="mt-2 h-[3px] w-24 rounded-full bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500" />
+        <div className="mt-3 h-px w-28 bg-gradient-to-r from-emerald-300 via-cyan-300 to-transparent" />
       </div>
-      <div className="hidden h-px flex-1 bg-gradient-to-r from-transparent via-white/15 to-transparent sm:block" />
+      <div className="hidden h-px flex-1 bg-gradient-to-r from-transparent via-emerald-400/20 to-transparent sm:block" />
     </div>
   );
 }
