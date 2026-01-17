@@ -116,70 +116,22 @@ const projectsData: Project[] = [
       "Framer Motion",
       "3D Models",
     ],
-    liveUrl: "https://jalinahirushan.vercel.app/",
+    liveUrl: "https://itsjalina.me/",
     projectType: "Individual",
     isMobile: false,
   },
   {
     title: "The Fuzzball Theorem - Exoplanet AI",
     description:
-      "An AI-powered web application that detects exoplanets from TESS light curve data using machine learning and signal processing. The system combines the Box Least Squares (BLS) algorithm for feature extraction with XGBoost classification to identify potential transit signals.",
-    image: "/1759852422221.jpeg",
-    tags: [
-      "Next.js",
-      "Tailwind CSS",
-      "FastAPI",
-      "Python",
-      "XGBoost",
-      "HuggingFace",
-      "Vercel",
-    ],
+      "An AI-powered web application developed for NASA Space Apps Challenge 2025 that detects exoplanets from TESS (Transiting Exoplanet Survey Satellite) light curve data using machine learning and signal processing techniques. The system integrates the Box Least Squares (BLS) algorithm for feature extraction and XGBoost for classification to identify potential exoplanet transit signals. Features TIC ID-based and CSV light curve analysis, real-time transit detection with confidence metrics, interactive 3D planet visualization, and CI/CD pipelines via GitHub Actions. Deployed on Vercel (frontend) and HuggingFace Spaces (backend).",
+    image: "/exoplanet.png", // You can add the actual image later
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "FastAPI", "Python", "XGBoost", "HuggingFace"],
+    liveUrl: "https://the-fuzzball-theorem-exoplanet-ai-f.vercel.app/", // Add live URL if available
+    githubUrl: "https://github.com/VishwaJaya01/the-fuzzball-theorem-exoplanet-ai", // Add GitHub URL if available
     projectType: "Group",
-    githubUrl:
-      "https://github.com/VishwaJaya01/the-fuzzball-theorem-exoplanet-ai",
-    liveUrl: "https://the-fuzzball-theorem-exoplanet-ai-f.vercel.app/",
     role: "Full Stack Developer",
     isMobile: false,
-  },
-  {
-    title: "AutoNova - Automobile Service Management Platform",
-    description:
-      "AutoNova is a cloud-native, microservices-based platform that streamlines enterprise service centers with role-based operations for vehicle maintenance, task tracking, and appointment scheduling. Built with Java Spring Boot and C# ASP.NET Core, it uses PostgreSQL and containerized services for scalable orchestration.",
-    image: "/autonova.png",
-    tags: [
-      "React.js",
-      "Java Spring Boot",
-      "PostgreSQL",
-      "Docker",
-      "Microservices",
-      "JWT",
-      "OAuth2",
-    ],
-    projectType: "Group",
-    githubUrl: "",
-    role: "Full Stack Developer",
-    isMobile: false,
-  },
-  {
-    title: "StreamVerse - Streaming Companion App",
-    description:
-      "A full-stack, cross-platform streaming companion app that aggregates movies, music, and podcasts into a unified mobile experience. Built with Expo and a TypeScript Express API, it supports content discovery, profiles, and synchronized favourites across devices.",
-    image: "/streamverse.jpg",
-    tags: [
-      "React Native",
-      "Expo",
-      "Express.js",
-      "TypeScript",
-      "MongoDB",
-      "Redux Toolkit",
-      "JWT",
-      "Cloudinary",
-    ],
-    projectType: "Individual",
-    githubUrl: "https://github.com/JalinaH/StreamVerse",
-    role: "Full Stack Developer",
-    isMobile: true,
-  },
+  }
 ];
 
 export default function ProjectsSection() {
