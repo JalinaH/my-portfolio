@@ -139,15 +139,15 @@ export default function HeroSection() {
 
         <div className="relative order-1 animate-fadeIn lg:order-2">
           <div className="absolute -inset-10 -z-10 bg-gradient-to-tr from-emerald-500/20 via-cyan-500/10 to-slate-500/10 blur-3xl" />
-          <div className="relative overflow-hidden rounded-[28px] border border-emerald-400/20 bg-black/60 p-5 shadow-[0_30px_120px_-60px_rgba(16,185,129,0.6)] backdrop-blur-2xl">
+          <div className="relative overflow-hidden rounded-[28px] border border-emerald-400/20 bg-black/60 p-4 shadow-[0_30px_120px_-60px_rgba(16,185,129,0.6)] backdrop-blur-2xl">
             <div className="absolute inset-x-6 top-6 h-32 rounded-full bg-gradient-to-r from-emerald-400/15 via-cyan-400/10 to-slate-400/10 blur-3xl" />
-            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-black/70 p-3">
+            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-black/70 p-2">
               <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[length:90px_90px] opacity-25" />
-              <div className="relative aspect-[4/5] overflow-hidden rounded-xl border border-white/5">
+              <div className="relative aspect-[3/4] overflow-hidden rounded-xl border border-white/5">
                 <Image
                   src={"/image.png"}
                   alt="Jalina Hirushan"
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover object-[70%_50%] scale-60"
                   width={720}
                   height={900}
                   priority
