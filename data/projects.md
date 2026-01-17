@@ -1,5 +1,45 @@
 # Projects
 
+## The Fuzzball Theorem – Exoplanet AI
+**Oct 2025** | Team Project (NASA Space Apps Challenge 2025)  
+An AI-powered web application that detects exoplanets from TESS light curve data using machine learning and signal processing techniques.  
+- **Tech Stack**: Next.js, Tailwind CSS, FastAPI, Python, XGBoost, HuggingFace, Vercel  
+- **Features**:  
+  - TIC ID-based and CSV light curve analysis  
+  - BLS-based feature extraction with XGBoost classification  
+  - Real-time transit detection with confidence metrics  
+  - Interactive 3D planet visualization  
+  - CI/CD via GitHub Actions; deployed on Vercel (frontend) and HuggingFace Spaces (backend)  
+
+---
+
+## AutoNova – Automobile Service Management Platform
+**2025** | Team Project  
+Cloud-native, microservices-based platform for enterprise service centers, covering maintenance operations, task tracking, and appointment scheduling.  
+- **Tech Stack**: Java Spring Boot, C# ASP.NET Core, PostgreSQL, Docker, Docker Compose, JWT, OAuth2, Spring Cloud Gateway, Netflix Eureka  
+- **Features**:  
+  - Employee work-hour tracking with approval workflows  
+  - Project and task lifecycle management with status tracking  
+  - Customer service history management and appointment booking  
+  - Role-based authentication and authorization with JWT/OAuth2  
+  - Real-time notifications and service progress monitoring  
+- **Architecture**: Microservices, API gateway, service discovery, RESTful inter-service communication, multi-schema PostgreSQL  
+
+---
+
+## StreamVerse – Streaming Companion App
+**2025** | Team Project  
+Cross-platform streaming companion app that aggregates movies, music, and podcasts into a single mobile experience.  
+- **Tech Stack**: Expo, React Native, Expo Router, Redux Toolkit, TypeScript, Express, MongoDB, Mongoose, JWT, Cloudinary  
+- **Features**:  
+  - Tab-based navigation with curated content discovery  
+  - Aggregated catalog from TMDB, iTunes Search, and Listen Notes  
+  - User profile management with avatar uploads  
+  - Favourites synchronized across client and backend  
+  - Centralized theming and reusable UI components  
+
+---
+
 ## CeylonRides – Vehicle Rental Platform
 **Mar 2025 – Apr 2025** | Solo Project  
 A complete vehicle rental web application serving Tourists, Drivers, and Administrators.  
