@@ -141,6 +141,45 @@ const projectsData: Project[] = [
     role: "Full Stack Developer",
     isMobile: false,
   },
+  {
+    title: "AutoNova - Automobile Service Management Platform",
+    description:
+      "AutoNova is a cloud-native, microservices-based platform that streamlines enterprise service centers with role-based operations for vehicle maintenance, task tracking, and appointment scheduling. Built with Java Spring Boot and C# ASP.NET Core, it uses PostgreSQL and containerized services for scalable orchestration.",
+    image: "/autonova.png",
+    tags: [
+      "React.js",
+      "Java Spring Boot",
+      "PostgreSQL",
+      "Docker",
+      "Microservices",
+      "JWT",
+      "OAuth2",
+    ],
+    projectType: "Group",
+    githubUrl: "",
+    role: "Full Stack Developer",
+    isMobile: false,
+  },
+  {
+    title: "StreamVerse - Streaming Companion App",
+    description:
+      "A full-stack, cross-platform streaming companion app that aggregates movies, music, and podcasts into a unified mobile experience. Built with Expo and a TypeScript Express API, it supports content discovery, profiles, and synchronized favourites across devices.",
+    image: "/streamverse.jpg",
+    tags: [
+      "React Native",
+      "Expo",
+      "Express.js",
+      "TypeScript",
+      "MongoDB",
+      "Redux Toolkit",
+      "JWT",
+      "Cloudinary",
+    ],
+    projectType: "Individual",
+    githubUrl: "https://github.com/JalinaH/StreamVerse",
+    role: "Full Stack Developer",
+    isMobile: true,
+  },
 ];
 
 export default function ProjectsSection() {
