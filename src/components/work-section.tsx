@@ -6,37 +6,35 @@ import { useInView } from "@/lib/animations";
 
 const workItems = [
   {
-    role: "Frontend Developer",
-    company: "Alphagenes",
-    period: "2025 - Present",
+    role: "Intern Software Engineer",
+    company: "Infinity Innovators (Pvt) Ltd",
+    period: "Jan 2026 - Present",
     summary:
-      "Building an educational mobile experience with a strong focus on polished UI delivery.",
+      "Contributing to the development of a production-ready mobile application using React Native",
     highlights: [
-      "Developing the Flutter front end for a production-ready mobile app.",
-      "Integrating screens with Spring Boot APIs and shaping the UI/UX system.",
+      "Participating in code reviews and ensuring adherence to best practices.",
+      "Working in an Agile environment to deliver high-quality software.",
+      "Developing a cross-platform mobile application using React Native.",
     ],
   },
   {
-    role: "Team Member, Firmware",
-    company: "IoT & Embedded Systems Labs (IES Labs), Faculty of IT",
-    period: "2025 - Present",
+    role: "Freelance Developer",
+    company: "Upwork",
+    period: "June 2025 - Present",
     summary:
-      "Contributing to embedded firmware initiatives and collaborative IoT research.",
+      "Creating web and mobile applications for clients using modern frameworks and best practices.",
     highlights: [
-      "Supporting firmware development and testing for connected systems.",
-      "Collaborating on IoT-focused prototypes and system integrations.",
+      "Delivered multiple projects using React, Next.js, and Flutter.",
+      "Collaborated with clients to refine requirements and ensure satisfaction.",
     ],
   },
   {
-    role: "Freelance Web & Mobile Developer",
-    company: "Independent",
-    period: "Apr 2025 - Present",
+    role: "Freelance Developer",
+    company: "Lushware Organization",
+    period: "Apr 2025 - Oct 2025",
     summary:
       "Delivering web and mobile experiences for clients across multiple stacks.",
-    highlights: [
-      "Building web apps with React and Next.js for real-world use cases.",
-      "Shipping cross-platform mobile apps with Flutter for client needs.",
-    ],
+    highlights: ["Building web apps with MERN stack for real-world use cases."],
   },
 ];
 
