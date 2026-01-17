@@ -4,12 +4,14 @@ import { useRef } from "react";
 import { GraduationCap, Calendar } from "lucide-react";
 import { useInView } from "@/lib/animations";
 import SectionHeading from "./section-heading";
+import SkillIcon from "./SkillIcon";
 
 interface Education {
   degree: string;
   institution: string;
   duration: string;
   description: string;
+  logo: string;
 }
 
 const educationData: Education[] = [
@@ -17,7 +19,8 @@ const educationData: Education[] = [
     degree: "GCE O/L",
     institution: "Malambe Boys' Model School",
     duration: "2017",
-    description: "9As",
+    description: "9As including ICT",
+    logo: "/mbs.png",
   },
   {
     degree: "GCE A/L",
@@ -25,6 +28,7 @@ const educationData: Education[] = [
     duration: "2021",
     description:
       "Combined Maths - A, Chemistry - A, Physics - B, Z-score - 1.758",
+    logo: "/nalanda.png",
   },
   {
     degree: "Bsc. (Hons) in Information Technology",
@@ -32,6 +36,7 @@ const educationData: Education[] = [
     duration: "2023 - Present",
     description:
       "Currently pursuing a degree in Information Technology at the University of Moratuwa, passionate about web and mobile app development.",
+    logo: "/uom.png",
   },
 ];
 
@@ -66,14 +71,23 @@ export default function EducationSection() {
                 <GraduationCap className="h-4 w-4" />
               </div>
               <div className="rounded-2xl border border-white/10 bg-black/60 p-5 shadow-[0_20px_60px_-40px_rgba(16,185,129,0.55)] backdrop-blur-sm">
-                <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                  <div>
-                    <h3 className="text-xl font-semibold text-slate-100">
-                      {item.degree}
-                    </h3>
-                    <p className="text-sm text-emerald-200">
-                      {item.institution}
-                    </p>
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                  <div className="flex items-start gap-4">
+                    <SkillIcon
+                      name={item.institution}
+                      icon={item.logo}
+                      size="compact"
+                      hideLabel
+                      hideMark
+                    />
+                    <div>
+                      <h3 className="text-xl font-semibold text-slate-100">
+                        {item.degree}
+                      </h3>
+                      <p className="text-sm text-emerald-200">
+                        {item.institution}
+                      </p>
+                    </div>
                   </div>
                   <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-200">
                     <Calendar className="h-4 w-4 text-emerald-300" />

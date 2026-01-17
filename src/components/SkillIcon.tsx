@@ -1,10 +1,15 @@
 "use client";
 
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 interface SkillIconProps {
   name: string;
   icon: string;
+  size?: "default" | "compact";
+  hideLabel?: boolean;
+  hideMark?: boolean;
+  className?: string;
 }
 
 const getSkillMark = (name: string) => {
@@ -16,12 +21,25 @@ const getSkillMark = (name: string) => {
   return `${parts[0][0]}${parts[1][0]}`.toUpperCase();
 };
 
-export default function SkillIcon({ name, icon }: SkillIconProps) {
+export default function SkillIcon({
+  name,
+  icon,
+  size = "default",
+  hideLabel = false,
+  hideMark = false,
+  className,
+}: SkillIconProps) {
   const mark = getSkillMark(name);
 
   return (
-    <div className="skill-icon-wrapper">
-      <div className="skill-icon">
+    <div
+      className={cn(
+        "skill-icon-wrapper",
+        size === "compact" && "compact",
+        className
+      )}
+    >
+      <div className={cn("skill-icon", size === "compact" && "compact")}>
         <span className="skill-icon-orbit" aria-hidden="true" />
         <span className="skill-icon-plate" aria-hidden="true" />
         <span className="skill-icon-spark" aria-hidden="true" />
@@ -36,9 +54,9 @@ export default function SkillIcon({ name, icon }: SkillIconProps) {
           height={40}
           className="skill-icon-image"
         />
-        <span className="skill-icon-mark">{mark}</span>
+        {!hideMark && <span className="skill-icon-mark">{mark}</span>}
       </div>
-      <span className="skill-name">{name}</span>
+      {!hideLabel && <span className="skill-name">{name}</span>}
     </div>
   );
 }
