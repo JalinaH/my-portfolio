@@ -1,42 +1,46 @@
 # Projects
 
+## Land Asset Valuation System – Mobile GIS Application
+**Government Project** | Valuation Department  
+A comprehensive mobile-first Land & Asset Valuation System to digitize property assessment workflows. Replaced manual field operations with an integrated GIS-enabled mobile application supporting offline data collection and real-time synchronization.
+
+- **Tech Stack**: Flutter, ASP.NET Core 8.0, PostgreSQL, Mapbox SDK, JWT Authentication  
+- **Architecture**: Clean Architecture with BLoC pattern and Riverpod dependency injection  
+- **Key Achievements**:  
+  - Enhanced field efficiency by 60% through automated data capture and report generation  
+  - Improved data accuracy by 80% via real-time validation and GPS-based asset marking  
+  - Built robust offline functionality with automatic sync for uninterrupted field operations  
+  - Delivered multi-language support (English, Sinhala, Tamil)  
+- **Core Features**:  
+  - Interactive mapping with polygon drawing and area calculations  
+  - Complete asset management for land acquisition and property assessments  
+  - Sales and rental evidence collection with image upload  
+  - Automated valuation reports and rating card generation  
+  - Multi-environment deployment (dev/test/production)  
+- **Impact**:  
+  - Streamlined operations for District Valuers and assessment teams  
+  - Enabled real-time sync between field operations and centralized GIS systems  
+  - Improved transparency in land acquisition, taxation, and urban planning  
+  - Successfully deployed across government valuation departments  
+
+---
+
 ## The Fuzzball Theorem – Exoplanet AI
-**Oct 2025** | Team Project (NASA Space Apps Challenge 2025)  
-An AI-powered web application that detects exoplanets from TESS light curve data using machine learning and signal processing techniques.  
-- **Tech Stack**: Next.js, Tailwind CSS, FastAPI, Python, XGBoost, HuggingFace, Vercel  
+**Oct 2025** | NASA Space Apps Challenge 2025  
+An AI-powered web application that detects exoplanets from TESS (Transiting Exoplanet Survey Satellite) light curve data using machine learning and signal processing techniques.
+
+- **Tech Stack**: Next.js, TypeScript, Tailwind CSS, FastAPI, Python, XGBoost, HuggingFace  
 - **Features**:  
   - TIC ID-based and CSV light curve analysis  
-  - BLS-based feature extraction with XGBoost classification  
   - Real-time transit detection with confidence metrics  
   - Interactive 3D planet visualization  
-  - CI/CD via GitHub Actions; deployed on Vercel (frontend) and HuggingFace Spaces (backend)  
-
----
-
-## AutoNova – Automobile Service Management Platform
-**2025** | Team Project  
-Cloud-native, microservices-based platform for enterprise service centers, covering maintenance operations, task tracking, and appointment scheduling.  
-- **Tech Stack**: Java Spring Boot, C# ASP.NET Core, PostgreSQL, Docker, Docker Compose, JWT, OAuth2, Spring Cloud Gateway, Netflix Eureka  
-- **Features**:  
-  - Employee work-hour tracking with approval workflows  
-  - Project and task lifecycle management with status tracking  
-  - Customer service history management and appointment booking  
-  - Role-based authentication and authorization with JWT/OAuth2  
-  - Real-time notifications and service progress monitoring  
-- **Architecture**: Microservices, API gateway, service discovery, RESTful inter-service communication, multi-schema PostgreSQL  
-
----
-
-## StreamVerse – Streaming Companion App
-**2025** | Team Project  
-Cross-platform streaming companion app that aggregates movies, music, and podcasts into a single mobile experience.  
-- **Tech Stack**: Expo, React Native, Expo Router, Redux Toolkit, TypeScript, Express, MongoDB, Mongoose, JWT, Cloudinary  
-- **Features**:  
-  - Tab-based navigation with curated content discovery  
-  - Aggregated catalog from TMDB, iTunes Search, and Listen Notes  
-  - User profile management with avatar uploads  
-  - Favourites synchronized across client and backend  
-  - Centralized theming and reusable UI components  
+  - CI/CD pipelines via GitHub Actions  
+  - Box Least Squares (BLS) algorithm for feature extraction  
+  - XGBoost classification for exoplanet transit signal identification  
+- **Deployment**: Frontend on Vercel, Backend on HuggingFace Spaces  
+- **Live Demo**: [The Fuzzball Theorem](https://the-fuzzball-theorem-exoplanet-ai-f.vercel.app/)  
+- **GitHub**: [Repository](https://github.com/VishwaJaya01/the-fuzzball-theorem-exoplanet-ai)  
+- **Role**: Full Stack Developer  
 
 ---
 
