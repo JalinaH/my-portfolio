@@ -120,6 +120,27 @@ const projectsData: Project[] = [
     projectType: "Individual",
     isMobile: false,
   },
+  {
+    title: "The Fuzzball Theorem - Exoplanet AI",
+    description:
+      "An AI-powered web application that detects exoplanets from TESS light curve data using machine learning and signal processing. The system combines the Box Least Squares (BLS) algorithm for feature extraction with XGBoost classification to identify potential transit signals.",
+    image: "/1759852422221.jpeg",
+    tags: [
+      "Next.js",
+      "Tailwind CSS",
+      "FastAPI",
+      "Python",
+      "XGBoost",
+      "HuggingFace",
+      "Vercel",
+    ],
+    projectType: "Group",
+    githubUrl:
+      "https://github.com/VishwaJaya01/the-fuzzball-theorem-exoplanet-ai",
+    liveUrl: "https://the-fuzzball-theorem-exoplanet-ai-f.vercel.app/",
+    role: "Full Stack Developer",
+    isMobile: false,
+  },
 ];
 
 export default function ProjectsSection() {
