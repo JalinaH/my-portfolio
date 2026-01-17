@@ -20,7 +20,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://itsjalina.me"),
-  title: "Jalina Hirushan | Digital Product Engineer",
+  title: "Jalina Hirushan",
   description:
     "Portfolio of Jalina Hirushan — crafting web, mobile, and IoT experiences with thoughtful engineering and bold design.",
   icons: {
