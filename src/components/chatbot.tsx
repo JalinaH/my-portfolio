@@ -95,7 +95,7 @@ export default function Chatbot() {
       {/* Chatbot Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-black p-4 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105 backdrop-blur-md border border-green-500/20"
+        className="fixed bottom-6 right-6 z-50 rounded-full border border-emerald-300/60 bg-emerald-300 p-4 text-black shadow-2xl shadow-emerald-500/30 transition-all duration-300 hover:scale-105"
         aria-label="Toggle chatbot"
       >
         {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
@@ -103,15 +103,15 @@ export default function Chatbot() {
 
       {/* Chatbot Window */}
       {isOpen && (
-        <div className="fixed bottom-20 right-6 z-40 w-80 h-96 bg-black/90 backdrop-blur-md border border-green-500/20 rounded-lg shadow-2xl flex flex-col">
+        <div className="fixed bottom-20 right-6 z-40 flex h-96 w-80 flex-col rounded-2xl border border-emerald-400/20 bg-black/90 shadow-[0_30px_120px_-70px_rgba(16,185,129,0.6)] backdrop-blur-xl">
           {/* Header */}
-          <div className="bg-gradient-to-r from-green-500/10 to-green-600/10 border-b border-green-500/20 text-white p-4 rounded-t-lg">
-            <h3 className="font-semibold text-green-500">Chat with Pixel</h3>
-            <p className="text-sm text-gray-300">Ask me about Jalina!</p>
+          <div className="rounded-t-2xl border-b border-emerald-400/20 bg-emerald-500/10 p-4 text-slate-100">
+            <h3 className="font-semibold text-emerald-200">Chat with Pixel</h3>
+            <p className="text-sm text-slate-300">Ask me about Jalina.</p>
           </div>
 
           {/* Messages Container */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-3 scrollbar-thin scrollbar-track-gray-800 scrollbar-thumb-green-500/50">
+          <div className="flex-1 space-y-3 overflow-y-auto p-4 scrollbar-thin scrollbar-track-black scrollbar-thumb-emerald-500/40">
             {messages.map((message) => (
               <div
                 key={message.id}
@@ -122,8 +122,8 @@ export default function Chatbot() {
                 <div
                   className={`max-w-xs p-3 rounded-lg backdrop-blur-sm ${
                     message.isUser
-                      ? "bg-green-500 text-black font-medium"
-                      : "bg-gray-800/80 text-gray-100 border border-gray-700/50"
+                      ? "bg-emerald-300 font-semibold text-black shadow-lg shadow-emerald-500/30"
+                      : "border border-white/10 bg-white/5 text-slate-100"
                   }`}
                 >
                   <p className="text-sm">{message.text}</p>
@@ -132,8 +132,8 @@ export default function Chatbot() {
             ))}
             {isLoading && (
               <div className="flex justify-start">
-                <div className="bg-gray-800/80 border border-gray-700/50 text-gray-100 p-3 rounded-lg backdrop-blur-sm">
-                  <Loader2 className="w-4 h-4 animate-spin text-green-500" />
+                <div className="rounded-lg border border-white/10 bg-white/5 p-3 text-slate-100 backdrop-blur-sm">
+                  <Loader2 className="h-4 w-4 animate-spin text-emerald-300" />
                 </div>
               </div>
             )}
@@ -142,7 +142,7 @@ export default function Chatbot() {
           </div>
 
           {/* Input Area */}
-          <div className="p-4 border-t border-green-500/20 backdrop-blur-sm">
+          <div className="border-t border-white/10 p-4 backdrop-blur-sm">
             <div className="flex space-x-2">
               <input
                 type="text"
@@ -150,13 +150,13 @@ export default function Chatbot() {
                 onChange={(e) => setInputMessage(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Ask me anything about Jalina..."
-                className="flex-1 bg-gray-800/80 text-white border border-gray-700/50 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500/50 focus:border-green-500/50 backdrop-blur-sm placeholder-gray-400"
+                className="flex-1 rounded-lg border border-white/10 bg-black/80 px-3 py-2 text-sm text-slate-100 placeholder-slate-500 outline-none transition focus:border-emerald-300/50 focus:ring-2 focus:ring-emerald-400/30"
                 disabled={isLoading}
               />
               <button
                 onClick={sendMessage}
                 disabled={isLoading || !inputMessage.trim()}
-                className="bg-green-500 hover:bg-green-600 disabled:bg-gray-600 disabled:opacity-50 text-black p-2 rounded-lg transition-all duration-200 backdrop-blur-sm"
+                className="rounded-lg bg-emerald-300 p-2 text-black transition-all duration-200 hover:shadow-lg hover:shadow-emerald-500/30 disabled:cursor-not-allowed disabled:bg-slate-700 disabled:text-slate-400"
               >
                 <Send size={16} />
               </button>

@@ -5,7 +5,6 @@ import SectionHeading from "./section-heading";
 import { useInView } from "@/lib/animations";
 import SkillIcon from "./SkillIcon";
 
-
 // Define skills by category
 const skillsByCategory = {
   "Programming Languages": [
@@ -55,34 +54,42 @@ export default function SkillsSection() {
     <section
       id="skills"
       ref={sectionRef}
-      className="py-20 min-h-screen flex flex-col justify-center"
+      className="flex min-h-screen flex-col justify-center py-24"
     >
       <SectionHeading title="Skills" />
 
-      <div className="space-y-12">
+      <div className="grid gap-5 md:grid-cols-2">
         {Object.entries(skillsByCategory).map(
           ([category, skills], categoryIndex) => (
             <div
               key={category}
-              className={`${
+              className={`rounded-2xl border border-emerald-400/15 bg-black/60 p-6 shadow-[0_20px_70px_-50px_rgba(16,185,129,0.55)] transition-all duration-700 ${
                 isInView
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-20"
-              } transition-all duration-700 ease-out`}
-              style={{ transitionDelay: `${categoryIndex * 100}ms` }}
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-10 opacity-0"
+              }`}
+              style={{ transitionDelay: `${categoryIndex * 120}ms` }}
             >
-              <h3 className="text-xl font-bold mb-6 text-green-500">
-                {category}
-              </h3>
+              <div className="flex items-center justify-between gap-3">
+                <div className="flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_0_6px_rgba(16,185,129,0.2)]" />
+                  <h3 className="text-lg font-semibold text-slate-100">
+                    {category}
+                  </h3>
+                </div>
+                <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">
+                  {skills.length} tools
+                </span>
+              </div>
 
-              <div className="flex flex-wrap gap-4">
+              <div className="mt-4 flex flex-wrap gap-6">
                 {skills.map((skill, skillIndex) => (
                   <div
-                    key={skillIndex}
-                    className={`transition-all duration-500`}
+                    key={skill.name}
+                    className="transition-transform duration-500 hover:-translate-y-1"
                     style={{
                       transitionDelay: `${
-                        categoryIndex * 100 + skillIndex * 50
+                        categoryIndex * 80 + skillIndex * 35
                       }ms`,
                     }}
                   >

@@ -1,11 +1,10 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { ExternalLink, Github } from "lucide-react";
 import { useInView } from "@/lib/animations";
 import SectionHeading from "./section-heading";
-import MacBookFrame from "./MacBookFrame";
-import MobileFrame from "./MobileFrame";
 
 interface Project {
   title: string;
@@ -146,89 +145,105 @@ export default function ProjectsSection() {
     <section
       id="projects"
       ref={sectionRef}
-      className="py-20 min-h-screen flex flex-col justify-center"
+      className="flex min-h-screen flex-col justify-center py-24"
     >
       <SectionHeading title="Projects" />
 
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="space-y-6">
         {projectsData.map((project, index) => (
           <div
             key={index}
-            className={`bg-gray-900/50 rounded-xl overflow-hidden border border-gray-800 hover:border-green-500/50 transition-all duration-500 transform hover:-translate-y-2 ${
+            className={`group relative overflow-hidden rounded-3xl border border-emerald-400/20 bg-black/70 shadow-[0_30px_120px_-80px_rgba(16,185,129,0.5)] transition-all duration-700 hover:border-emerald-300/60 hover:shadow-[0_40px_140px_-80px_rgba(16,185,129,0.7)] ${
               isInView
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-20"
+                ? "translate-y-0 opacity-100"
+                : "translate-y-10 opacity-0"
             }`}
-            style={{ transitionDelay: `${index * 200}ms` }}
+            style={{ transitionDelay: `${index * 140}ms` }}
           >
-            <div className="relative overflow-hidden">
-              {project.isMobile ? (
-                <MobileFrame imageUrl={project.image || "/placeholder.svg"} />
-              ) : (
-                <MacBookFrame imageUrl={project.image || "/placeholder.svg"} />
-              )}
-            </div>
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_10%_15%,rgba(16,185,129,0.16),transparent_45%),radial-gradient(circle_at_80%_80%,rgba(34,211,238,0.12),transparent_40%)] opacity-70" />
+            <div className="pointer-events-none absolute inset-0 space-scanlines opacity-0 transition-opacity duration-700 group-hover:opacity-30" />
 
-            <div className="p-6">
-              <h3 className="text-xl font-bold mb-2 text-green-500">
-                {project.title}
-              </h3>
-              <div className="flex items-center mb-2 text-sm">
-                <span
-                  className={`${
-                    project.projectType === "Group"
-                      ? "bg-blue-500/20 text-blue-400"
-                      : "bg-purple-500/20 text-purple-400"
-                  } px-2 py-0.5 rounded-full`}
-                >
-                  {project.projectType} Project
-                </span>
-                {project.projectType === "Group" && project.role && (
-                  <span className="bg-green-500/20 text-green-400 px-2 py-0.5 rounded-full ml-2">
-                    {project.role}
-                  </span>
-                )}
-                {/* Add a badge for mobile projects */}
-                {project.isMobile && (
-                  <span className="bg-orange-500/20 text-orange-400 px-2 py-0.5 rounded-full ml-2">
-                    Mobile App
-                  </span>
-                )}
+            <div className="relative flex flex-col gap-6 p-6 md:flex-row md:items-center">
+              <div
+                className={`relative w-full overflow-hidden rounded-2xl border border-white/10 bg-black/60 ${
+                  project.isMobile ? "aspect-[3/5]" : "aspect-[4/3]"
+                } md:w-[42%]`}
+              >
+                <Image
+                  src={project.image || "/placeholder.svg"}
+                  alt={`${project.title} preview`}
+                  fill
+                  className="object-cover opacity-90 transition-opacity duration-500 group-hover:opacity-100"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  priority={index < 2}
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent" />
+                <div className="pointer-events-none absolute inset-0 space-twinkle opacity-35" />
               </div>
-              <p className="text-gray-300 mb-4">{project.description}</p>
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.tags.map((tag, tagIndex) => (
-                  <span
-                    key={tagIndex}
-                    className="bg-green-500/10 text-green-500 text-xs px-3 py-1 rounded-full"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <div className="flex space-x-4">
-                {project.liveUrl && (
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center text-gray-300 hover:text-green-500 transition-colors"
-                  >
-                    <ExternalLink className="h-4 w-4 mr-1" />
-                    Live Demo
-                  </a>
-                )}
-                {project.githubUrl && (
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center text-gray-300 hover:text-green-500 transition-colors"
-                  >
-                    <Github className="h-4 w-4 mr-1" />
-                    Code
-                  </a>
-                )}
+
+              <div className="flex-1 space-y-4">
+                <div className="flex items-center gap-3 text-[10px] uppercase tracking-[0.35em] text-emerald-200/80">
+                  <span className="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_12px_rgba(16,185,129,0.7)]" />
+                  <span>Mission File</span>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-semibold text-slate-100">
+                    {project.title}
+                  </h3>
+                  <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-slate-400">
+                    <span className="rounded-full border border-emerald-400/40 bg-emerald-500/10 px-3 py-1 text-[10px] text-emerald-100">
+                      {project.projectType}
+                    </span>
+                    {project.projectType === "Group" && project.role && (
+                      <span className="rounded-full border border-emerald-300/30 bg-emerald-500/10 px-3 py-1 text-[10px] font-semibold text-emerald-100">
+                        {project.role}
+                      </span>
+                    )}
+                    {project.isMobile && (
+                      <span className="rounded-full border border-emerald-300/30 bg-emerald-500/10 px-3 py-1 text-[10px] font-semibold text-emerald-100">
+                        Mobile app
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                <p className="text-slate-300">{project.description}</p>
+
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((tag, tagIndex) => (
+                    <span
+                      key={tagIndex}
+                      className="rounded-full space-chip px-3 py-1 text-xs"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex flex-wrap gap-3">
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full border border-emerald-300/50 bg-emerald-500/10 px-4 py-2 text-sm font-semibold text-emerald-100 transition-colors duration-200 hover:border-emerald-200 hover:text-emerald-50"
+                    >
+                      <ExternalLink className="h-4 w-4" />
+                      Live Demo
+                    </a>
+                  )}
+                  {project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-slate-100 transition-colors duration-200 hover:border-emerald-200/70 hover:text-emerald-100"
+                    >
+                      <Github className="h-4 w-4" />
+                      Code
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
           </div>
