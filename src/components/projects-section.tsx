@@ -35,7 +35,7 @@ const projectsData: Project[] = [
   {
     title: "Smart Cricket Trainee - CricBOT Mobile App",
     description:
-      "As part of our first-year IoT hardware project, I developed a mobile app for CricBOT—an automated cricket practice machine. Built with React Native (Expo) and styled using NativeWind, the app features Firebase authentication and Firestore integration. It communicates with the CricBOT machine via WiFi using API endpoints hosted on an ESP8266 (NodeMCU). Users can customize practice sessions, track player stats through charts, and manage profiles, offering a smooth and interactive IoT experience.",
+      "Solo-built the companion mobile app for an IoT-powered cricket training machine. Engineered real-time WiFi communication with ESP8266 hardware, Firebase auth, session customization, and player stat tracking with interactive charts. Delivered a polished React Native experience that bridges physical hardware with a seamless digital interface.",
     image: "/cricbotmobile.jpeg",
     tags: ["React Native", "Tailwind CSS", "Firebase", "IoT"],
     githubUrl: "https://github.com/JalinaH/CricBOT",
@@ -45,7 +45,7 @@ const projectsData: Project[] = [
   {
     title: "Smart Cricket Trainee - CricBOT",
     description:
-      "As part of our first-year IoT-based hardware project, we developed CricBOT—an automated cricket practice machine aimed at enhancing training with customizable sessions. The system is powered by an Arduino Mega and ESP8266 (NodeMCU) for connectivity. Users can select ball type, count, and delay via a keypad interface or through a companion mobile app built with React Native. Motor speeds and angles adjust dynamically for various ball types (e.g., fast, bouncer, swing). Integrated components like proximity sensors, LCDs, and load cells enable real-time feedback and error detection.",
+      "Co-designed and built an automated cricket practice machine from the ground up—Arduino Mega + ESP8266 controlling DC motors, servos, and sensors for five distinct ball types. Integrated proximity detection, load-cell calibration, and real-time LCD feedback. Paired with a custom React Native app for wireless control, delivering a complete hardware-to-mobile IoT training system.",
     image: "/cricbot.jpeg",
     tags: ["Arduino", "NodeMCU", "IoT"],
     githubUrl:
@@ -56,7 +56,7 @@ const projectsData: Project[] = [
   {
     title: "DebateX - Revolutionizing debate platform",
     description:
-      "DebateX is a modern web platform designed to host structured debates efficiently, offering a seamless experience for debaters, judges, and organizers. Built with Next.js, Tailwind CSS, Firebase, and Framer Motion, it features automated time management, role-based interfaces, real-time chat, session recording, and personal note-taking tools. With support for fair coin tosses and clean UI components via Radix UI, DebateX ensures organized and engaging debate sessions. The project was recognized as a semi-finalist at Idealize 2024 for its innovative approach to enhancing online discourse.",
+      "Shipped a real-time debate platform with role-based views for judges, debaters, and organizers—featuring live video via Stream.io, automated timers, session recording, and integrated note-taking. Built with Next.js, Firebase, and Framer Motion. Reached the semi-finals at Idealize 2024, validating the platform's approach to structured online discourse.",
     image: "/debatex.jpeg",
     tags: [
       "Next.js",
@@ -76,7 +76,7 @@ const projectsData: Project[] = [
   {
     title: "CeylonRides - Vehicle Rental Platform",
     description:
-      "CeylonRides is a full-stack vehicle rental web application built independently using the MERN stack, designed to serve multiple user roles—Tourists, Drivers, and Administrators. It enables tourists to browse and book vehicles with or without drivers, while providing admins with full control over bookings, drivers, and vehicles through a robust admin panel. Drivers can view their assigned trips and manage their profiles via a dedicated dashboard. Key features include JWT-based authentication, role-based access, dynamic booking management, and calendar-based availability tracking. Deployed using Netlify and Render, CeylonRides reflects my ability to architect and deliver scalable, production-ready applications from the ground up.",
+      "Independently architected and shipped a full MERN-stack vehicle rental platform supporting three distinct user roles with dedicated dashboards. Built JWT auth, calendar-based availability, booking approval workflows, and driver assignment from scratch. Deployed frontend on Netlify and backend on Render—live and handling real user flows end-to-end.",
     image: "/ceylonrides.jpeg",
     tags: ["React.js", "Node.js", "MongoDB", "Express.js", "Tailwind CSS"],
     liveUrl: "https://ceylonrides.netlify.app",

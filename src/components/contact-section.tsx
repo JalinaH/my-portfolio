@@ -122,7 +122,7 @@ export default function ContactSection() {
                       Email
                     </h4>
                     <p className="text-slate-300">
-                      jalinahirushan2002@gmail.com
+                      jalina@itsjalina.me
                     </p>
                   </div>
                 </div>
