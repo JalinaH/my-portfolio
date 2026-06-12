@@ -7,39 +7,32 @@ import SkillIcon from "./SkillIcon";
 
 // Define skills by category
 const skillsByCategory = {
-  "Programming Languages": [
-    { name: "C", icon: "/skills/c.svg" },
-    { name: "C#", icon: "/skills/csharp.svg" },
-    { name: "Python", icon: "/skills/python.svg" },
+  "Core Stack": [
     { name: "JavaScript", icon: "/skills/javascript.svg" },
     { name: "TypeScript", icon: "/skills/typescript.svg" },
-    { name: "Java", icon: "/skills/java.svg" },
-    { name: "Dart", icon: "/skills/dart.svg" },
-  ],
-  Frontend: [
-    { name: "HTML", icon: "/skills/html.svg" },
-    { name: "CSS", icon: "/skills/css.svg" },
-    { name: "Tailwind CSS", icon: "/skills/tailwindcss.svg" },
     { name: "React", icon: "/skills/react.svg" },
     { name: "Next.js", icon: "/skills/nextjs.svg" },
-    { name: "React Native (Mobile)", icon: "/skills/react.svg" },
-    { name: "Flutter", icon: "/skills/flutter.svg" },
-    { name: "Vue.js", icon: "/skills/vuejs.svg" },
-  ],
-  Backend: [
     { name: "Node.js", icon: "/skills/nodejs.svg" },
     { name: "Express.js", icon: "/skills/express.svg" },
-    { name: "Firebase", icon: "/skills/firebase.svg" },
-  ],
-  Databases: [
+    { name: "Tailwind CSS", icon: "/skills/tailwindcss.svg" },
     { name: "MongoDB", icon: "/skills/mongodb.svg" },
-    { name: "MySQL", icon: "/skills/mysql.svg" },
+    { name: "Firebase", icon: "/skills/firebase.svg" },
+    { name: "React Native (Mobile)", icon: "/skills/react.svg" },
   ],
-  Other: [
-    { name: "Figma", icon: "/skills/figma.svg" },
+  "Also work with": [
+    { name: "Python", icon: "/skills/python.svg" },
+    { name: "Java", icon: "/skills/java.svg" },
+    { name: "C", icon: "/skills/c.svg" },
+    { name: "C#", icon: "/skills/csharp.svg" },
+    { name: "Dart", icon: "/skills/dart.svg" },
+    { name: "Flutter", icon: "/skills/flutter.svg" },
+    { name: "Vue.js", icon: "/skills/vuejs.svg" },
+    { name: "HTML", icon: "/skills/html.svg" },
+    { name: "CSS", icon: "/skills/css.svg" },
+    { name: "MySQL", icon: "/skills/mysql.svg" },
     { name: "Git", icon: "/skills/git.svg" },
-    { name: "GitHub", icon: "/skills/github.svg" },
-    { name: "VS Code", icon: "/skills/vscode.svg" },
+    { name: "Figma", icon: "/skills/figma.svg" },
+    { name: "Expo", icon: "/skills/expo.svg" },
   ],
 };
 
