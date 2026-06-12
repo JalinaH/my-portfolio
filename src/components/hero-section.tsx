@@ -8,14 +8,14 @@ import { typeText } from "@/lib/animations";
 
 const heroHighlights = [
   {
-    title: "Currently",
-    description: "BSc (Hons) in IT @ University of Moratuwa.",
-    icon: Sparkles,
+    title: "What I ship",
+    description: "Production web & mobile apps, IoT integrations, and GIS platforms.",
+    icon: Rocket,
   },
   {
     title: "Latest builds",
-    description: "DebateX, CeylonRides, CricBOT — shipped for real users.",
-    icon: Rocket,
+    description: "CeylonRides, DebateX, CricBOT — live and serving real users.",
+    icon: Sparkles,
   },
   {
     title: "Toolbox",
@@ -74,10 +74,10 @@ export default function HeroSection() {
               <span ref={typingRef} className="text-emerald-200"></span>
             </p>
             <p className="max-w-2xl text-lg leading-relaxed text-slate-300">
-              I&apos;m an enthusiastic IT undergraduate who blends product thinking
-              with playful, production-ready engineering. From IoT prototypes to
-              polished Next.js and React Native apps, I love shipping interfaces
-              that feel alive.
+              I build full-stack web and mobile products that solve real
+              problems - from multi-role platforms handling bookings and payments
+              to IoT systems that talk to hardware. Clean architecture,
+              sharp interfaces, shipped on time.
             </p>
           </div>
 
