@@ -4,6 +4,7 @@ import EducationSection from "@/components/education-section";
 import SkillsSection from "@/components/skills-section";
 import WorkSection from "@/components/work-section";
 import ProjectsSection from "@/components/projects-section";
+import TestimonialsSection from "@/components/testimonials-section";
 import ContactSection from "@/components/contact-section";
 import BlogsSection from "@/components/blog-section";
 import Chatbot from "@/components/chatbot";
@@ -26,6 +27,7 @@ export default function Home() {
         <WorkSection />
         <ProjectsSection />
         <BlogsSection />
+        <TestimonialsSection />
         <ContactSection />
       </div>
       <Chatbot />
