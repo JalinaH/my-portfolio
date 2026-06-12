@@ -1,6 +1,6 @@
 ## Social Links
 
-- **Mail** - jalinahirushan2002@gmail.com
+- **Mail** - jalina@itsjalina.me
 - **website** - https://itsjalina.me
 - **Linkedin** - https://www.linkedin.com/in/jalinahirushan/
 - **Github** - https://github.com/JalinaH
