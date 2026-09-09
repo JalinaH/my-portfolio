@@ -14,6 +14,7 @@ interface Project {
   tags: string[];
   liveUrl?: string;
   githubUrl?: string;
+  repositories?: { label: string; url: string }[];
   projectType: "Group" | "Individual";
   role?: string; // Only required for group projects
   isMobile?: boolean; // New property to indicate if project is mobile
@@ -22,85 +23,68 @@ interface Project {
 
 const projectsData: Project[] = [
   {
-    title: "CookPal",
+    title: "TerraFix",
     description:
-      "Cookpal is a web application developed as part of our first-year web assignment, aimed at recipe exploration and management. Built with React (Vite) and Firebase, it features secure user authentication, personalized profiles, intuitive recipe creation, detailed recipe views, and tag-based filtering. Deployed on Firebase for easy access.",
-    image: "/cookpal.jpeg",
-    tags: ["React.js", "Bootstrap", "CSS", "Firebase"],
-    liveUrl: "https://cookpal-7029c.web.app/",
-    githubUrl: "https://github.com/rithakith/RecipeApp",
-    projectType: "Group",
-    role: "Frontend Developer",
-    isMobile: false,
-  },
-  {
-    title: "Smart Cricket Trainee - CricBOT Mobile App",
-    description:
-      "As part of our first-year IoT hardware project, I developed a mobile app for CricBOT—an automated cricket practice machine. Built with React Native (Expo) and styled using NativeWind, the app features Firebase authentication and Firestore integration. It communicates with the CricBOT machine via WiFi using API endpoints hosted on an ESP8266 (NodeMCU). Users can customize practice sessions, track player stats through charts, and manage profiles, offering a smooth and interactive IoT experience.",
-    image: "/cricbotmobile.jpeg",
-    tags: ["React Native", "Tailwind CSS", "Firebase", "IoT"],
-    githubUrl: "https://github.com/JalinaH/CricBOT",
-    projectType: "Individual",
-    isMobile: true, // This is a mobile project
-  },
-  {
-    title: "Smart Cricket Trainee - CricBOT",
-    description:
-      "As part of our first-year IoT-based hardware project, we developed CricBOT—an automated cricket practice machine aimed at enhancing training with customizable sessions. The system is powered by an Arduino Mega and ESP8266 (NodeMCU) for connectivity. Users can select ball type, count, and delay via a keypad interface or through a companion mobile app built with React Native. Motor speeds and angles adjust dynamically for various ball types (e.g., fast, bouncer, swing). Integrated components like proximity sensors, LCDs, and load cells enable real-time feedback and error detection.",
-    image: "/cricbot.jpeg",
-    tags: ["Arduino", "NodeMCU", "IoT"],
-    githubUrl:
-      "https://github.com/JalinaH/CricBOT---Automated-Cricket-Practice-Machine",
-    projectType: "Group",
-    isMobile: false,
-  },
-  {
-    title: "DebateX - Revolutionizing debate platform",
-    description:
-      "DebateX is a modern web platform designed to host structured debates efficiently, offering a seamless experience for debaters, judges, and organizers. Built with Next.js, Tailwind CSS, Firebase, and Framer Motion, it features automated time management, role-based interfaces, real-time chat, session recording, and personal note-taking tools. With support for fair coin tosses and clean UI components via Radix UI, DebateX ensures organized and engaging debate sessions. The project was recognized as a semi-finalist at Idealize 2024 for its innovative approach to enhancing online discourse.",
-    image: "/debatex.jpeg",
-    tags: [
-      "Next.js",
-      "Tailwind CSS",
-      "Framer Motion",
-      "@stream-io/video-react-sdk",
-      "Clerk",
-      "Firebase",
-      "Radix UI",
+      "Built an AI-powered DevOps platform as part of the Ascentic AI Launch Pad to diagnose failed Terraform CI pipelines and generate human-reviewable repairs. Analyzes bounded evidence from the exact failing revision in at most two semantic stages, then converts proposed edits into deterministic Git patches with strict scope restrictions. Verifies repairs with Terraform tooling and requires human approval before repository modification, followed by fresh verification before committing to the PR. Uses a Next.js control plane, PostgreSQL job coordination, and a separate worker with disposable workspaces. Never executes terraform apply, auto-merges PRs, or force-pushes changes.",
+    image: "/terrafix.png",
+    liveUrl: "https://terrafix-dashboard.vercel.app/",
+    repositories: [
+      { label: "Agent Code", url: "https://github.com/JalinaH/semantic-terraform-agent" },
+      { label: "Dashboard Code", url: "https://github.com/JalinaH/semantic-terraform-dashboard" },
     ],
-    liveUrl: "https://debate-x-nrd5.vercel.app",
-    githubUrl: "https://github.com/VinukaVilhan/DebateXt",
-    projectType: "Group",
-    role: "Backend Developer",
-    isMobile: false,
-  },
-  {
-    title: "CeylonRides - Vehicle Rental Platform",
-    description:
-      "CeylonRides is a full-stack vehicle rental web application built independently using the MERN stack, designed to serve multiple user roles—Tourists, Drivers, and Administrators. It enables tourists to browse and book vehicles with or without drivers, while providing admins with full control over bookings, drivers, and vehicles through a robust admin panel. Drivers can view their assigned trips and manage their profiles via a dedicated dashboard. Key features include JWT-based authentication, role-based access, dynamic booking management, and calendar-based availability tracking. Deployed using Netlify and Render, CeylonRides reflects my ability to architect and deliver scalable, production-ready applications from the ground up.",
-    image: "/ceylonrides.jpeg",
-    tags: ["React.js", "Node.js", "MongoDB", "Express.js", "Tailwind CSS"],
-    liveUrl: "https://ceylonrides.netlify.app",
-    githubUrl: "https://github.com/JalinaH/CeylonRides",
+    tags: [
+      "Python",
+      "Terraform",
+      "DevOps",
+      "AI / LLMs",
+      "IaC",
+      "CI/CD",
+      "Next.js",
+      "TypeScript",
+      "PostgreSQL",
+      "Prisma",
+      "GitHub Apps",
+      "GitHub Actions",
+      "OpenRouter",
+      "Gemini",
+      "AWS",
+    ],
     projectType: "Individual",
     isMobile: false,
   },
   {
-    title: "Pay Sheet Emailer",
+    title: "AutoNova",
     description:
-      "A desktop application developed for the Finance Division of the University of Moratuwa to streamline monthly paysheet distribution. Built with Python and CustomTkinter, it features a modern multi-page UI with secure user authentication and role-based access control. The system automates email distribution of paysheets to all university employees with real-time status updates, delivery verification, and centralized settings management. This project demonstrates a real-world solution tailored to administrative workflows.",
-    image: "/1753926863994.jpeg", // You can add a specific image for this project later
-    tags: ["Python", "CustomTkinter", "SQLite", "Email Automation"],
+      "Contributed as a full stack developer to a cloud-native automobile service management platform for enterprise service centers. Combines Java Spring Boot and C# ASP.NET Core microservices with PostgreSQL and Docker to manage employee work hours, task lifecycles, customer appointments, and vehicle service history. Features validation and approval workflows, JWT and OAuth2 role-based access, real-time notifications, and service progress monitoring. Uses Netflix Eureka for service discovery, Spring Cloud Gateway for API routing, and REST APIs for inter-service communication.",
+    image: "/autonova.png",
+    repositories: [
+      { label: "Frontend Code", url: "https://github.com/void-squad/autonova-frontend-v1" },
+      { label: "Backend Code", url: "https://github.com/void-squad/autonova-backend" },
+    ],
+    tags: [
+      "React.js",
+      "Spring Boot",
+      "Java",
+      "C#",
+      "ASP.NET Core",
+      "Docker",
+      "Docker Hub",
+      "REST APIs",
+      "Microservices",
+      "PostgreSQL",
+    ],
     projectType: "Group",
     role: "Full Stack Developer",
     isMobile: false,
   },
   {
-    title: "Land and Asset Valuation System",
+    title: "The Fuzzball Theorem - Exoplanet AI",
     description:
-      "A comprehensive full-stack application designed for land and asset valuation with advanced GIS capabilities. Led the complete development lifecycle from requirement gathering and planning to UI/UX design, development, and testing. The system features a mobile frontend built with Flutter for field data collection, a robust .NET backend for business logic, and integrated PostgreSQL/SQLite databases for data management. Includes GIS-based visualization powered by Mapbox for precise location mapping and asset visualization.",
-    image: "/2nd_yr.png", // You can add a specific image for this project later
-    tags: ["Flutter", ".NET", "PostgreSQL", "SQLite", "Mapbox", "GIS"],
+      "An AI-powered web application developed for NASA Space Apps Challenge 2025 that detects exoplanets from TESS (Transiting Exoplanet Survey Satellite) light curve data using machine learning and signal processing techniques. The system integrates the Box Least Squares (BLS) algorithm for feature extraction and XGBoost for classification to identify potential exoplanet transit signals. Features TIC ID-based and CSV light curve analysis, real-time transit detection with confidence metrics, interactive 3D planet visualization, and CI/CD pipelines via GitHub Actions. Deployed on Vercel (frontend) and HuggingFace Spaces (backend).",
+    image: "/exoplanet.png", // You can add the actual image later
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "FastAPI", "Python", "XGBoost", "HuggingFace"],
+    liveUrl: "https://the-fuzzball-theorem-exoplanet-ai-f.vercel.app/", // Add live URL if available
+    githubUrl: "https://github.com/VishwaJaya01/the-fuzzball-theorem-exoplanet-ai", // Add GitHub URL if available
     projectType: "Group",
     role: "Full Stack Developer",
     isMobile: false,
@@ -122,17 +106,89 @@ const projectsData: Project[] = [
     isMobile: false,
   },
   {
-    title: "The Fuzzball Theorem - Exoplanet AI",
+    title: "Land and Asset Valuation System",
     description:
-      "An AI-powered web application developed for NASA Space Apps Challenge 2025 that detects exoplanets from TESS (Transiting Exoplanet Survey Satellite) light curve data using machine learning and signal processing techniques. The system integrates the Box Least Squares (BLS) algorithm for feature extraction and XGBoost for classification to identify potential exoplanet transit signals. Features TIC ID-based and CSV light curve analysis, real-time transit detection with confidence metrics, interactive 3D planet visualization, and CI/CD pipelines via GitHub Actions. Deployed on Vercel (frontend) and HuggingFace Spaces (backend).",
-    image: "/exoplanet.png", // You can add the actual image later
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "FastAPI", "Python", "XGBoost", "HuggingFace"],
-    liveUrl: "https://the-fuzzball-theorem-exoplanet-ai-f.vercel.app/", // Add live URL if available
-    githubUrl: "https://github.com/VishwaJaya01/the-fuzzball-theorem-exoplanet-ai", // Add GitHub URL if available
+      "A comprehensive full-stack application designed for land and asset valuation with advanced GIS capabilities. Led the complete development lifecycle from requirement gathering and planning to UI/UX design, development, and testing. The system features a mobile frontend built with Flutter for field data collection, a robust .NET backend for business logic, and integrated PostgreSQL/SQLite databases for data management. Includes GIS-based visualization powered by Mapbox for precise location mapping and asset visualization.",
+    image: "/2nd_yr.png", // You can add a specific image for this project later
+    tags: ["Flutter", ".NET", "PostgreSQL", "SQLite", "Mapbox", "GIS"],
     projectType: "Group",
     role: "Full Stack Developer",
     isMobile: false,
-  }
+  },
+  {
+    title: "Pay Sheet Emailer",
+    description:
+      "A desktop application developed for the Finance Division of the University of Moratuwa to streamline monthly paysheet distribution. Built with Python and CustomTkinter, it features a modern multi-page UI with secure user authentication and role-based access control. The system automates email distribution of paysheets to all university employees with real-time status updates, delivery verification, and centralized settings management. This project demonstrates a real-world solution tailored to administrative workflows.",
+    image: "/1753926863994.jpeg", // You can add a specific image for this project later
+    tags: ["Python", "CustomTkinter", "SQLite", "Email Automation"],
+    projectType: "Group",
+    role: "Full Stack Developer",
+    isMobile: false,
+  },
+  {
+    title: "CeylonRides - Vehicle Rental Platform",
+    description:
+      "Independently architected and shipped a full MERN-stack vehicle rental platform supporting three distinct user roles with dedicated dashboards. Built JWT auth, calendar-based availability, booking approval workflows, and driver assignment from scratch. Deployed frontend on Netlify and backend on Render—live and handling real user flows end-to-end.",
+    image: "/ceylonrides.jpeg",
+    tags: ["React.js", "Node.js", "MongoDB", "Express.js", "Tailwind CSS"],
+    liveUrl: "https://ceylonrides.netlify.app",
+    githubUrl: "https://github.com/JalinaH/CeylonRides",
+    projectType: "Individual",
+    isMobile: false,
+  },
+  {
+    title: "DebateX - Revolutionizing debate platform",
+    description:
+      "Shipped a real-time debate platform with role-based views for judges, debaters, and organizers—featuring live video via Stream.io, automated timers, session recording, and integrated note-taking. Built with Next.js, Firebase, and Framer Motion. Reached the semi-finals at Idealize 2024, validating the platform's approach to structured online discourse.",
+    image: "/debatex.jpeg",
+    tags: [
+      "Next.js",
+      "Tailwind CSS",
+      "Framer Motion",
+      "@stream-io/video-react-sdk",
+      "Clerk",
+      "Firebase",
+      "Radix UI",
+    ],
+    liveUrl: "https://debate-x-nrd5.vercel.app",
+    githubUrl: "https://github.com/VinukaVilhan/DebateXt",
+    projectType: "Group",
+    role: "Backend Developer",
+    isMobile: false,
+  },
+  {
+    title: "Smart Cricket Trainee - CricBOT",
+    description:
+      "Co-designed and built an automated cricket practice machine from the ground up—Arduino Mega + ESP8266 controlling DC motors, servos, and sensors for five distinct ball types. Integrated proximity detection, load-cell calibration, and real-time LCD feedback. Paired with a custom React Native app for wireless control, delivering a complete hardware-to-mobile IoT training system.",
+    image: "/cricbot.jpeg",
+    tags: ["Arduino", "NodeMCU", "IoT"],
+    githubUrl:
+      "https://github.com/JalinaH/CricBOT---Automated-Cricket-Practice-Machine",
+    projectType: "Group",
+    isMobile: false,
+  },
+  {
+    title: "Smart Cricket Trainee - CricBOT Mobile App",
+    description:
+      "Solo-built the companion mobile app for an IoT-powered cricket training machine. Engineered real-time WiFi communication with ESP8266 hardware, Firebase auth, session customization, and player stat tracking with interactive charts. Delivered a polished React Native experience that bridges physical hardware with a seamless digital interface.",
+    image: "/cricbotmobile.jpeg",
+    tags: ["React Native", "Tailwind CSS", "Firebase", "IoT"],
+    githubUrl: "https://github.com/JalinaH/CricBOT",
+    projectType: "Individual",
+    isMobile: true, // This is a mobile project
+  },
+  {
+    title: "CookPal",
+    description:
+      "Cookpal is a web application developed as part of our first-year web assignment, aimed at recipe exploration and management. Built with React (Vite) and Firebase, it features secure user authentication, personalized profiles, intuitive recipe creation, detailed recipe views, and tag-based filtering. Deployed on Firebase for easy access.",
+    image: "/cookpal.jpeg",
+    tags: ["React.js", "Bootstrap", "CSS", "Firebase"],
+    liveUrl: "https://cookpal-7029c.web.app/",
+    githubUrl: "https://github.com/rithakith/RecipeApp",
+    projectType: "Group",
+    role: "Frontend Developer",
+    isMobile: false,
+  },
 ];
 
 export default function ProjectsSection() {
@@ -232,17 +288,20 @@ export default function ProjectsSection() {
                       Live Demo
                     </a>
                   )}
-                  {project.githubUrl && (
+                  {(project.repositories ?? (project.githubUrl
+                    ? [{ label: "Code", url: project.githubUrl }]
+                    : [])).map((repository) => (
                     <a
-                      href={project.githubUrl}
+                      key={repository.url}
+                      href={repository.url}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-slate-100 transition-colors duration-200 hover:border-emerald-200/70 hover:text-emerald-100"
                     >
                       <Github className="h-4 w-4" />
-                      Code
+                      {repository.label}
                     </a>
-                  )}
+                  ))}
                 </div>
               </div>
             </div>

@@ -1,33 +1,26 @@
 # Skills
 
-## Programming Languages
+## Core Stack
 - **JavaScript / TypeScript**
+- **React.js**
+- **Next.js**
+- **Node.js**
+- **Express.js**
+- **Tailwind CSS**
+- **MongoDB**
+- **Firebase**
+- **React Native**
+
+## Also work with
 - **Python**
 - **Java**
 - **C**
+- **C#**
 - **Dart**
-- **HTML / CSS**
-
-## Frontend Development
-- **React.js**
-- **Next.js**
-- **Tailwind CSS**
-- **React Native**
 - **Flutter**
-
-## Backend Development
-- **Node.js**
-- **Express.js**
-- **RESTful APIs**
-
-## Databases
-- **MongoDB**
-- **PostgreSQL**
+- **Vue.js**
+- **HTML / CSS**
 - **MySQL**
-- **Firebase**
-
-## Tools & Software
-- **VS Code**
+- **Git**
 - **Figma**
 - **Expo**
-- **Git / GitHub**
