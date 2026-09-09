@@ -6,9 +6,11 @@ import { useRef, useState } from "react";
 import { Mail, Send, Github, Linkedin } from "lucide-react";
 import { useInView } from "@/lib/animations";
 import SectionHeading from "./section-heading";
+import { contactEmail } from "@/lib/portfolio";
 import { sendContactEmail } from "@/app/actions";
 
 export default function ContactSection() {
+  const submittingRef = useRef(false);
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, threshold: 0.2 });
   const [formState, setFormState] = useState({
@@ -36,6 +38,8 @@ export default function ContactSection() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (submittingRef.current) return;
+    submittingRef.current = true;
     setStatus({ type: "loading", message: "Sending your message..." });
 
     try {
@@ -67,6 +71,8 @@ export default function ContactSection() {
         type: "error",
         message: "An unexpected error occurred. Please try again later.",
       });
+    } finally {
+      submittingRef.current = false;
     }
   };
 
@@ -121,9 +127,7 @@ export default function ContactSection() {
                     <h4 className="text-lg font-semibold text-slate-100">
                       Email
                     </h4>
-                    <p className="text-slate-300">
-                      jalina@itsjalina.me
-                    </p>
+                    <a className="break-all text-slate-300" href={`mailto:${contactEmail}`}>{contactEmail}</a>
                   </div>
                 </div>
 
@@ -170,6 +174,7 @@ export default function ContactSection() {
                     type="text"
                     id="name"
                     name="name"
+                    maxLength={100}
                     value={formState.name}
                     onChange={handleChange}
                     required
@@ -184,6 +189,7 @@ export default function ContactSection() {
                     type="email"
                     id="email"
                     name="email"
+                    maxLength={254}
                     value={formState.email}
                     onChange={handleChange}
                     required
@@ -199,6 +205,7 @@ export default function ContactSection() {
                   type="text"
                   id="subject"
                   name="subject"
+                    maxLength={150}
                   value={formState.subject}
                   onChange={handleChange}
                   required
@@ -212,6 +219,7 @@ export default function ContactSection() {
                 <textarea
                   id="message"
                   name="message"
+                    maxLength={5000}
                   value={formState.message}
                   onChange={handleChange}
                   required
@@ -221,13 +229,14 @@ export default function ContactSection() {
               </div>
               <button
                 type="submit"
+                disabled={status.type === "loading"}
                 className="flex items-center gap-2 rounded-full border border-emerald-300/70 bg-emerald-300 px-6 py-3 text-sm font-semibold text-black shadow-[0_10px_40px_-18px_rgba(16,185,129,0.7)] transition-transform duration-200 hover:-translate-y-0.5"
               >
-                Send Message
+                {status.type === "loading" ? "Sending…" : "Send Message"}
                 <Send className="h-4 w-4" />
               </button>
               {status.type !== "idle" && (
-                <p
+                <p role="status" aria-live="polite"
                   className={`mt-4 text-sm ${
                     status.type === "success"
                       ? "text-emerald-400"

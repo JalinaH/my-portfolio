@@ -791,3 +791,13 @@ body {
     opacity: 1;
   }
 }
+
+/* Keep navigation targets clear of the fixed header. */
+section[id] { scroll-margin-top: 7rem; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

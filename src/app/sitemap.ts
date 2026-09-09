@@ -1,27 +1,5 @@
-import { MetadataRoute } from 'next'
-
+import { MetadataRoute } from "next";
+import { siteUrl } from "@/lib/portfolio";
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://itsjalina.me'
-  
-  return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 1,
-    },
-    // Add more pages here if you have them
-    // {
-    //   url: `${baseUrl}/about`,
-    //   lastModified: new Date(),
-    //   changeFrequency: 'monthly',
-    //   priority: 0.8,
-    // },
-    // {
-    //   url: `${baseUrl}/projects`,
-    //   lastModified: new Date(),
-    //   changeFrequency: 'weekly',
-    //   priority: 0.5,
-    // },
-  ]
+  return [{ url: siteUrl, changeFrequency: "monthly", priority: 1 }];
 }

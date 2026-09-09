@@ -5,40 +5,38 @@ import type React from "react";
 import { useEffect, useState } from "react";
 
 export function typeText(element: HTMLElement, phrases: string[], speed = 100) {
-  let i = 0;
-  let j = 0;
-  let currentPhrase = "";
-  let isDeleting = false;
-
+  let timer: ReturnType<typeof setTimeout>;
+  let cancelled = false;
+  let phraseIndex = 0;
+  let count = 0;
+  let deleting = false;
+  const phrasesToType = phrases.filter(Boolean);
+  if (!phrasesToType.length) return () => {};
+  const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
   function loop() {
-    currentPhrase = phrases[i];
-
-    if (isDeleting) {
-      element.textContent = currentPhrase.substring(0, j - 1);
-      j--;
-
-      if (j === 0) {
-        isDeleting = false;
-        i = (i + 1) % phrases.length;
-        setTimeout(loop, 500);
-        return;
-      }
-    } else {
-      element.textContent = currentPhrase.substring(0, j + 1);
-      j++;
-
-      if (j === currentPhrase.length) {
-        isDeleting = true;
-        setTimeout(loop, 1000);
-        return;
-      }
-    }
-
-    const speedFactor = isDeleting ? 0.5 : 1;
-    setTimeout(loop, speed * speedFactor);
+    if (cancelled) return;
+    const phrase = phrasesToType[phraseIndex];
+    count += deleting ? -1 : 1;
+    element.textContent = phrase.slice(0, count);
+    let delay = deleting ? speed / 2 : speed;
+    if (count === phrase.length) { deleting = true; delay = 1000; }
+    else if (count === 0) { deleting = false; phraseIndex = (phraseIndex + 1) % phrasesToType.length; delay = 500; }
+    timer = setTimeout(loop, delay);
   }
+  function updateMotion() {
+    clearTimeout(timer);
+    if (motion.matches) element.textContent = phrasesToType[0];
+    else { count = 0; deleting = false; loop(); }
+  }
+  motion.addEventListener("change", updateMotion);
+  updateMotion();
+  return () => { cancelled = true; clearTimeout(timer); motion.removeEventListener("change", updateMotion); };
+}
 
-  loop();
+export function scrollToSection(selector: string) {
+  document.querySelector(selector)?.scrollIntoView({
+    behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+  });
 }
 
 interface UseInViewOptions {

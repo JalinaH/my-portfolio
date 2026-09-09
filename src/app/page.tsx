@@ -9,6 +9,13 @@ import ContactSection from "@/components/contact-section";
 import BlogsSection from "@/components/blog-section";
 import Chatbot from "@/components/chatbot";
 
+import { Suspense } from "react";
+import { getMediumPosts } from "@/lib/blog";
+
+async function LatestBlogs() {
+  return <BlogsSection blogs={await getMediumPosts()} />;
+}
+
 export default function Home() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-black text-slate-100">
@@ -26,7 +33,7 @@ export default function Home() {
         <SkillsSection />
         <WorkSection />
         <ProjectsSection />
-        <BlogsSection />
+        <Suspense fallback={<section id="blogs" className="py-24" aria-busy="true"><p role="status">Loading articles…</p></section>}><LatestBlogs /></Suspense>
         <TestimonialsSection />
         <ContactSection />
       </div>
