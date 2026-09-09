@@ -1,5 +1,47 @@
 # Projects
 
+## TerraFix – AI-Powered Terraform CI Repair Platform
+**Individual Project** | Ascentic AI Launch Pad  
+An AI-powered DevOps platform designed to diagnose failed Terraform CI pipelines and generate verified, human-reviewable code repairs. Handles failures whose diagnostics and repairs may span files, dependencies, provider constraints, permissions, credentials, or the execution environment.
+
+- **Tech Stack**: Python, Terraform, Next.js, TypeScript, PostgreSQL, Prisma, GitHub Apps, GitHub Actions, LLM APIs, OpenRouter, Gemini, AWS  
+- **Architecture**: Next.js control plane with PostgreSQL for persistent state and job coordination; separate worker for Git and Terraform operations in disposable workspaces  
+- **Core Features**:  
+  - Collects bounded evidence from the exact failing revision, including diagnostics, relevant code changes, Terraform dependencies, and provider context when required  
+  - Uses LLM-based semantic reasoning to identify likely root causes and propose structured source-level edits, bounded to a maximum of two semantic stages  
+  - Converts proposed edits into deterministic Git patches with strict path and scope restrictions  
+  - Verifies repairs using Terraform fmt, backend-disabled init, validate, and optional refresh-free planning  
+  - Requires human approval before repository modification and fresh verification before committing the repair to the PR  
+- **Safety Boundaries**: Never executes terraform apply, auto-merges PRs, or force-pushes changes  
+- **Objective**: Reduce repetitive Terraform debugging while preserving deterministic verification and developer control  
+- **Skills**: Python, Terraform, DevOps, Artificial Intelligence (AI), Large Language Models (LLM), Infrastructure as Code (IaC), CI/CD, Next.js
+- **Live Demo**: [TerraFix](https://terrafix-dashboard.vercel.app/)
+- **GitHub**: [Agent](https://github.com/JalinaH/semantic-terraform-agent), [Dashboard](https://github.com/JalinaH/semantic-terraform-dashboard)
+
+
+---
+
+## AutoNova – Automobile Service Management Platform
+**Group Project** | Full Stack Developer  
+A cloud-native, microservices-based platform designed to streamline vehicle maintenance operations, employee task tracking, and customer appointment scheduling for enterprise-level automobile service centers.
+
+- **Tech Stack**: React.js, Java Spring Boot, C# ASP.NET Core, Entity Framework Core, PostgreSQL, Docker, Docker Compose, JWT, OAuth2, Spring Security, REST APIs  
+- **Architecture**: Polyglot microservices with service layer and DTO-based design, Netflix Eureka service discovery, Spring Cloud Gateway API routing, RESTful inter-service communication with data enrichment, and multi-schema PostgreSQL databases  
+- **Core Features**:  
+  - Employee work hour tracking with automated validation and approval workflows  
+  - Project and task lifecycle management with status tracking  
+  - Customer vehicle service history and appointment booking  
+  - Role-based authentication and authorization using JWT, OAuth2, and Spring Security  
+  - Real-time notifications and service progress monitoring  
+  - Centralized API gateway and service discovery for inter-service communication  
+- **Objective**: Provide a unified, role-based platform for service operations with real-time data synchronization across services  
+- **Skills**: React.js, Spring Boot, Docker, Java, Docker Hub, REST APIs, Microservices, PostgreSQL  
+- **Role**: Full Stack Developer
+- **GitHub**: [Frontend](https://github.com/void-squad/autonova-frontend-v1), [Backend](https://github.com/void-squad/autonova-backend)
+
+
+---
+
 ## Land Asset Valuation System – Mobile GIS Application
 **Government Project** | Valuation Department  
 A comprehensive mobile-first Land & Asset Valuation System to digitize property assessment workflows. Replaced manual field operations with an integrated GIS-enabled mobile application supporting offline data collection and real-time synchronization.
