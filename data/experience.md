@@ -1,4 +1,6 @@
-# Experience
+# Historical experience notes
+
+Current public work history is maintained in `src/lib/portfolio.ts` and included directly in the chatbot context. The notes below are retained for reference, not used as current chatbot facts. Their “Present” labels have not been revalidated.
 
 ## Frontend Developer — Alphagenes  
 *(2025 – Present)*  

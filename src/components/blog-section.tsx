@@ -1,84 +1,18 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { ExternalLink } from "lucide-react";
 import { useInView } from "@/lib/animations";
 import SectionHeading from "./section-heading";
 import Image from "next/image";
-import { fetchMediumPosts } from "@/lib/utils";
+import type { Blog } from "@/lib/blog";
 
-// Define the Blog interface
-interface Blog {
-  title: string;
-  description: string;
-  imageUrl: string;
-  url: string;
-  date: string;
-  tags: string[];
-}
-
-// Replace with your Medium username
-const MEDIUM_USERNAME = "jalinah";
-
-export default function BlogSection() {
+export default function BlogSection({ blogs }: { blogs: Blog[] }) {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef as React.RefObject<Element>, {
     once: true,
     threshold: 0.1,
   });
-  const [blogs, setBlogs] = useState<Blog[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    async function loadMediumPosts() {
-      try {
-        setIsLoading(true);
-        const posts = await fetchMediumPosts(MEDIUM_USERNAME);
-
-        if (posts.length > 0) {
-          setBlogs(posts);
-        } else {
-          // Fallback to example blog posts if no Medium posts found
-          setBlogs([
-            {
-              title: "How to Build a Responsive Website with Tailwind CSS",
-              description:
-                "Learn how to create a fully responsive website using Tailwind CSS, a utility-first CSS framework that makes styling your projects a breeze.",
-              imageUrl: "/placeholder.svg",
-              url: "https://medium.com/",
-              date: "June 15, 2023",
-              tags: ["Tailwind CSS", "Responsive Design", "Web Development"],
-            },
-            {
-              title: "Getting Started with React Hooks",
-              description:
-                "An introduction to React Hooks and how they can simplify your React components while making them more reusable and maintainable.",
-              imageUrl: "/placeholder.svg",
-              url: "https://medium.com/",
-              date: "May 22, 2023",
-              tags: ["React", "Hooks", "JavaScript"],
-            },
-            {
-              title: "The Future of Web Development: What to Expect in 2024",
-              description:
-                "Explore the upcoming trends and technologies that will shape the future of web development in the coming year.",
-              imageUrl: "/placeholder.svg",
-              url: "https://medium.com/",
-              date: "April 10, 2023",
-              tags: ["Web Development", "Future Trends", "Technology"],
-            },
-          ]);
-        }
-      } catch (error) {
-        console.error("Failed to load Medium posts:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    loadMediumPosts();
-  }, []);
-
   return (
     <section
       id="blogs"
@@ -87,15 +21,13 @@ export default function BlogSection() {
     >
       <SectionHeading title="Blog" />
 
-      {isLoading ? (
-        <div className="flex justify-center items-center h-64">
-          <div className="h-12 w-12 animate-spin rounded-full border-b-2 border-t-2 border-emerald-400"></div>
-        </div>
+      {blogs.length === 0 ? (
+        <p className="text-slate-300">Articles are unavailable right now. <a className="underline text-emerald-200" href="https://jalinah.medium.com" target="_blank" rel="noopener noreferrer">Read my posts on Medium</a>.</p>
       ) : (
         <div className="space-y-6">
           {blogs.map((blog, index) => (
             <a
-              key={index}
+              key={blog.url}
               href={blog.url}
               target="_blank"
               rel="noopener noreferrer"
@@ -120,7 +52,6 @@ export default function BlogSection() {
                       fill
                       className="object-cover opacity-90 transition-opacity duration-500 group-hover:opacity-100"
                       sizes="(max-width: 768px) 100vw, 50vw"
-                      priority={index < 2}
                     />
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent" />
                     <div className="pointer-events-none absolute inset-0 space-twinkle opacity-40" />

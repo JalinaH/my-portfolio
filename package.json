@@ -6,16 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit --incremental false",
+    "test": "node --require ./tests/register.cjs --test tests/regressions.cjs"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
-    "@react-three/drei": "^9.122.0",
-    "@react-three/fiber": "^8.18.0",
     "@vercel/analytics": "^1.5.0",
-    "@vercel/kv": "^3.0.0",
     "@vercel/speed-insights": "^1.2.0",
-    "ai": "^5.0.15",
     "autoprefixer": "^10.4.21",
     "clsx": "^2.1.1",
     "fast-xml-parser": "^4.3.2",
@@ -25,8 +23,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tailwind-merge": "^3.2.0",
-    "tailwindcss-animate": "^1.0.7",
-    "three": "^0.176.0"
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@types/node": "^20",

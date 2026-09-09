@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { ArrowDown, Cpu, Rocket, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { typeText } from "@/lib/animations";
+import { typeText, scrollToSection } from "@/lib/animations";
 
 const heroHighlights = [
   {
@@ -35,7 +35,7 @@ export default function HeroSection() {
         "mobile-first experiences",
         "IoT-powered ideas",
       ];
-      typeText(typingRef.current, phrases, 90);
+      return typeText(typingRef.current, phrases, 90);
     }
   }, []);
 
@@ -71,7 +71,7 @@ export default function HeroSection() {
             </h1>
             <p className="text-sm uppercase tracking-[0.22em] text-slate-400">
               Building for{" "}
-              <span ref={typingRef} className="text-emerald-200"></span>
+              <span ref={typingRef} className="text-emerald-200">digital products</span>
             </p>
             <p className="max-w-2xl text-lg leading-relaxed text-slate-300">
               I&apos;m an enthusiastic IT undergraduate who blends product thinking
@@ -87,9 +87,7 @@ export default function HeroSection() {
               className="relative overflow-hidden rounded-full border border-emerald-300/70 bg-emerald-300 px-6 py-3 text-sm font-semibold text-black shadow-[0_10px_40px_-18px_rgba(16,185,129,0.85)] transition-transform duration-200 hover:-translate-y-0.5"
               onClick={(e) => {
                 e.preventDefault();
-                document.querySelector("#contact")?.scrollIntoView({
-                  behavior: "smooth",
-                });
+                scrollToSection("#contact");
               }}
             >
               Start a project
@@ -99,9 +97,7 @@ export default function HeroSection() {
               className="rounded-full border border-emerald-300/40 bg-black/60 px-6 py-3 text-sm font-semibold text-emerald-100 transition-all duration-200 hover:border-emerald-300/70 hover:text-emerald-100 hover:-translate-y-0.5"
               onClick={(e) => {
                 e.preventDefault();
-                document.querySelector("#projects")?.scrollIntoView({
-                  behavior: "smooth",
-                });
+                scrollToSection("#projects");
               }}
             >
               View portfolio
@@ -192,11 +188,10 @@ export default function HeroSection() {
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce">
         <a
           href="#education"
+          aria-label="Go to education"
           onClick={(e) => {
             e.preventDefault();
-            document.querySelector("#education")?.scrollIntoView({
-              behavior: "smooth",
-            });
+            scrollToSection("#education");
           }}
           className="flex h-12 w-12 items-center justify-center rounded-full border border-emerald-400/30 bg-black/60 text-emerald-200 backdrop-blur-md transition-colors hover:border-emerald-300/60"
         >

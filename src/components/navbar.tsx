@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { scrollToSection } from "@/lib/animations";
 import { cn } from "@/lib/utils";
 
 const navItems = [
@@ -53,9 +54,7 @@ export default function Navbar() {
                 className="text-base font-semibold text-slate-100 transition-colors hover:text-emerald-200"
                 onClick={(e) => {
                   e.preventDefault();
-                  document.querySelector("#home")?.scrollIntoView({
-                    behavior: "smooth",
-                  });
+                  scrollToSection("#home");
                 }}
               >
                 Jalina Hirushan
@@ -73,9 +72,7 @@ export default function Navbar() {
                 className="group relative overflow-hidden rounded-full px-3 py-2 text-sm text-slate-200 transition-colors duration-200 hover:text-emerald-200"
                 onClick={(e) => {
                   e.preventDefault();
-                  document.querySelector(item.href)?.scrollIntoView({
-                    behavior: "smooth",
-                  });
+                  scrollToSection(item.href);
                 }}
               >
                 <span className="absolute inset-0 bg-emerald-400/10 opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
@@ -94,9 +91,7 @@ export default function Navbar() {
               className="relative overflow-hidden rounded-full border border-emerald-400/50 bg-black px-4 py-2 text-sm font-semibold text-emerald-100 shadow-[0_0_25px_rgba(16,185,129,0.35)] transition-transform duration-200 hover:-translate-y-0.5 hover:bg-emerald-400/10"
               onClick={(e) => {
                 e.preventDefault();
-                document.querySelector("#contact")?.scrollIntoView({
-                  behavior: "smooth",
-                });
+                scrollToSection("#contact");
               }}
             >
               Let&apos;s talk
@@ -108,6 +103,8 @@ export default function Navbar() {
             className="md:hidden text-slate-200 hover:text-emerald-200"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle navigation menu"
+            aria-expanded={isOpen}
+            aria-controls="mobile-navigation"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -115,7 +112,7 @@ export default function Navbar() {
 
         {/* Mobile Navigation Menu */}
         {isOpen && (
-          <div className="md:hidden mt-3 rounded-2xl px-4 py-4 animate-fadeIn space-panel">
+          <div id="mobile-navigation" className="md:hidden mt-3 rounded-2xl px-4 py-4 animate-fadeIn space-panel">
             <div className="flex flex-col space-y-3">
               {navItems.map((item) => (
                 <a
@@ -124,9 +121,7 @@ export default function Navbar() {
                   className="rounded-lg px-3 py-3 text-slate-100 transition-colors duration-200 hover:bg-emerald-400/10 hover:text-emerald-100"
                   onClick={(e) => {
                     e.preventDefault();
-                    document.querySelector(item.href)?.scrollIntoView({
-                      behavior: "smooth",
-                    });
+                    scrollToSection(item.href);
                     setIsOpen(false);
                   }}
                 >
@@ -138,9 +133,7 @@ export default function Navbar() {
                 className="rounded-lg border border-emerald-400/60 bg-black px-3 py-3 text-center font-semibold text-emerald-100 shadow-[0_0_25px_rgba(16,185,129,0.35)]"
                 onClick={(e) => {
                   e.preventDefault();
-                  document.querySelector("#contact")?.scrollIntoView({
-                    behavior: "smooth",
-                  });
+                  scrollToSection("#contact");
                   setIsOpen(false);
                 }}
               >

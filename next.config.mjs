@@ -1,16 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: { outputFileTracingIncludes: { "/api/chat": ["./data/**/*.md"] } },
   images: {
-    domains: ["cdn-images-1.medium.com", "medium.com"],
-    // Alternatively, you can use remotePatterns for more control
-    // remotePatterns: [
-    //   {
-    //     protocol: 'https',
-    //     hostname: 'cdn-images-1.medium.com',
-    //     pathname: '**',
-    //   },
-    // ],
+    remotePatterns: ["cdn-images-1.medium.com", "cdn-images-2.medium.com", "miro.medium.com"].map(hostname => ({ protocol: "https", hostname })),
   },
 };
-
 export default nextConfig;

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { ExternalLink, Github } from "lucide-react";
 import { useInView } from "@/lib/animations";
 import SectionHeading from "./section-heading";
+import { siteUrl } from "@/lib/portfolio";
 
 interface Project {
   title: string;
@@ -116,7 +117,7 @@ const projectsData: Project[] = [
       "Framer Motion",
       "3D Models",
     ],
-    liveUrl: "https://itsjalina.me/",
+    liveUrl: siteUrl,
     projectType: "Individual",
     isMobile: false,
   },
@@ -175,7 +176,6 @@ export default function ProjectsSection() {
                   fill
                   className="object-cover opacity-90 transition-opacity duration-500 group-hover:opacity-100"
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  priority={index < 2}
                 />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent" />
                 <div className="pointer-events-none absolute inset-0 space-twinkle opacity-35" />

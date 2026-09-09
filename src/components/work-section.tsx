@@ -4,39 +4,7 @@ import { useRef } from "react";
 import SectionHeading from "./section-heading";
 import { useInView } from "@/lib/animations";
 
-const workItems = [
-  {
-    role: "Intern Software Engineer",
-    company: "Infinity Innovators (Pvt) Ltd",
-    period: "Jan 2026 - Present",
-    summary:
-      "Contributing to the development of a production-ready mobile application using React Native",
-    highlights: [
-      "Participating in code reviews and ensuring adherence to best practices.",
-      "Working in an Agile environment to deliver high-quality software.",
-      "Developing a cross-platform mobile application using React Native.",
-    ],
-  },
-  {
-    role: "Freelance Developer",
-    company: "Upwork",
-    period: "June 2025 - Present",
-    summary:
-      "Creating web and mobile applications for clients using modern frameworks and best practices.",
-    highlights: [
-      "Delivered multiple projects using React, Next.js, and Flutter.",
-      "Collaborated with clients to refine requirements and ensure satisfaction.",
-    ],
-  },
-  {
-    role: "Freelance Developer",
-    company: "Lushware Organization",
-    period: "Apr 2025 - Oct 2025",
-    summary:
-      "Delivering web and mobile experiences for clients across multiple stacks.",
-    highlights: ["Building web apps with MERN stack for real-world use cases."],
-  },
-];
+import { workItems } from "@/lib/portfolio";
 
 export default function WorkSection() {
   const sectionRef = useRef<HTMLElement>(null);
